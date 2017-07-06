@@ -23,27 +23,27 @@ namespace DAX.CIM.NetSamScada.PreProcessors
             // Dictionary holding ACLS terminals that need to be reconnected to new CN
             Dictionary<Terminal, ConnectivityNode> aclsTerminalNewCn = new Dictionary<Terminal, ConnectivityNode>();
 
-            // Before processing enumerable we to use context, to figure out what needed to be changed in the stream
+            // Before processing enumerable we use context, to figure out what needed to be changed in the stream
             foreach (var contextCimObj in context.GetAllObjects())
             {
                 if (contextCimObj is PowerTransformer)
                 {
                     var pt = contextCimObj as PowerTransformer;
 
-                    var neighbors = pt.GetNeighborConductingEquipments();
+                    var neighbors = pt.GetNeighborConductingEquipments(context);
 
                     foreach (var neighbor in neighbors)
                     {
                         // If power transformer is connected directly to an ACLS then add disconnected link switch (PSI thing) in between
-                        if (neighbor is ACLineSegment)
+                        if (neighbor is ACLineSegment && neighbor.PSRType != "InternalCable")
                         {
                             var acls = neighbor as ACLineSegment;
 
                             // Get the terminal of the ACLS that is connected to the power transformer
-                            var aclsTerminal = acls.GetTerminal(pt);
+                            var aclsTerminal = acls.GetTerminal(pt, true, context);
 
                             // Get the terminal of the PT that is connected to the ACLS
-                            var ptTerminal = pt.GetTerminal(acls);
+                            var ptTerminal = pt.GetTerminal(acls, true, context);
 
                             // Create a new CN to be used between ACLS and DL switch
                             var newCn = new ConnectivityNode();
@@ -53,7 +53,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                             // Create bay to hold disconnected link switch
                             var newBay = new BayExt();
                             newBay.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), _guidOffset++, true).ToString();
-                            newBay.VoltageLevel = new BayVoltageLevel() { @ref = pt.GetSubstation().GetVoltageLevel(acls.BaseVoltage).mRID };
+                            newBay.VoltageLevel = new BayVoltageLevel() { @ref = pt.GetSubstation(true, context).GetVoltageLevel(acls.BaseVoltage, true, context).mRID };
                             newBay.name = pt.name + " DL";
                             newBay.description = "Auto generated DL Bay";
                             newObjects.Add(newBay);

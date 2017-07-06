@@ -65,7 +65,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
             acls.Location = new PhysicalNetworkModel.PowerSystemResourceLocation() { @ref = aclsLoc.mRID };
             cimObjects.Add(acls);
 
-            var mapper = new PNM2NetSamObjectMapper();
+            var mapper = new PNM2NetSamObjectMapper(_context);
 
             var netSamAcls = mapper.MapObject(mapContext, acls) as Equipment.ACLineSegment;
             var netSamAclsAsset = mapper.MapObject(mapContext, aclsAsset) as Equipment.Asset;
@@ -106,7 +106,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         [TestMethod]
         public void CompleteNrgiTest()
         {
-            bool run = false;
+            bool run = true;
 
             if (run)
             {
@@ -121,6 +121,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
                 Assert.IsTrue(CimObjUniquenessChecker.IsUnique(result));
 
                 var xmlProfile = converter.GetXMLData();
+
+                Assert.IsTrue(xmlProfile.Disconnector.ToList().Exists(o => o.description == "Auto generated DL"));
 
                 XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
                 System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\complete_net.xml");

@@ -29,7 +29,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                     Switch sw = inputCimObject as Switch;
 
                     // Only manipulate switches that are inside substations and that has no bay
-                    if (sw.IsInsideSubstation() && !sw.HasBay())
+                    if (sw.IsInsideSubstation(context) && !sw.HasBay(true,context))
                     {
                         // Create fictional bay
                         var newBay = new BayExt();
@@ -38,7 +38,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                         newBay.description = "Auto generated bay";
 
                         // Get the substation voltage level that the bay must reference
-                        var vl = sw.GetSubstation().GetVoltageLevel(sw.BaseVoltage);
+                        var vl = sw.GetSubstation(true, context).GetVoltageLevel(sw.BaseVoltage, true, context);
                         newBay.VoltageLevel = new BayVoltageLevel() { @ref = vl.mRID };
 
                         // Modify switch to point to new bay

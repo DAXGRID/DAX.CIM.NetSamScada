@@ -48,7 +48,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
 
             List<Equipment.IdentifiedObject> mappedObjects = new List<Equipment.IdentifiedObject>();
 
-            var mapper = new PNM2NetSamObjectMapper();
+            var mapper = new PNM2NetSamObjectMapper(_context);
             var mapContext = new MappingContext();
 
             foreach (var cimObj in afterProcessing)

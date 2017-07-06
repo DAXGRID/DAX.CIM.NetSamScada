@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using DAX.CIM.PhysicalNetworkModel.Traversal;
+using DAX.CIM.PhysicalNetworkModel.Traversal.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,12 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
     /// </summary>
     public class PNM2NetSamObjectMapper
     {
-        public PNM2NetSamObjectMapper()
+        CimContext _cimContext;
+
+        public PNM2NetSamObjectMapper(CimContext cimContext)
         {
+            _cimContext = cimContext;
+
             Mapper.Initialize(cfg => {
                 // Map conducting equipment
                 cfg.CreateMap<PhysicalNetworkModel.IdentifiedObject, Equipment.IdentifiedObject>()
@@ -243,13 +249,59 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 ((Equipment.PowerSystemResource)netSamObj).PSRType = new Equipment.PowerSystemResourcePSRType() { @ref = psrType.mRID };
             }
 
-            // Handle base voltage
-            if (pnmObj is PhysicalNetworkModel.ConductingEquipment && ((PhysicalNetworkModel.ConductingEquipment)pnmObj).BaseVoltage != 0)
+            // Handle base voltage on conducting equipments
+            if (pnmObj is PhysicalNetworkModel.ConductingEquipment)
             {
                 var ci = pnmObj as PhysicalNetworkModel.ConductingEquipment;
-                var baseVoltage = mapContext.GetOrCreateBaseVoltage(ci.BaseVoltage);
-                ((Equipment.ConductingEquipment)netSamObj).BaseVoltage = new Equipment.ConductingEquipmentBaseVoltage() { @ref = baseVoltage.mRID };
+
+                // If no voltage level, try get it from a neighboor
+                // FIX: all conducting equipment except power transformer should have a base voltage.
+                if (!(pnmObj is PhysicalNetworkModel.PowerTransformer || pnmObj is PhysicalNetworkModel.AsynchronousMachine || pnmObj is PhysicalNetworkModel.SynchronousMachine || pnmObj is PhysicalNetworkModel.ExternalNetworkInjection)  && ci.BaseVoltage == 0)
+                {
+                    
+                    var neigboors = ci.GetNeighborConductingEquipments(_cimContext);
+
+                    var neighboorWithVoltageLevel = neigboors.Find(o => o.BaseVoltage > 0);
+
+                    // If a neighboor with voltage level found, use that one
+                    if (neighboorWithVoltageLevel != null)
+                        ci.BaseVoltage = neighboorWithVoltageLevel.BaseVoltage;
+                    // If an orphan energy consumer, set voltage level to 400 volt
+                    else if (neighboorWithVoltageLevel == null && pnmObj is PhysicalNetworkModel.EnergyConsumer)
+                        ci.BaseVoltage = 400;
+                    else
+                        throw new Exception("ConductingEquipment with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
+                }                    
+
+                if (ci.BaseVoltage > 0)
+                {
+                    var baseVoltage = mapContext.GetOrCreateBaseVoltage(ci.BaseVoltage);
+                    ((Equipment.ConductingEquipment)netSamObj).BaseVoltage = new Equipment.ConductingEquipmentBaseVoltage() { @ref = baseVoltage.mRID };
+                }
             }
+
+            // Handle base voltage on voltage levels
+            if (pnmObj is PhysicalNetworkModel.VoltageLevel)
+            {
+                if (((PhysicalNetworkModel.VoltageLevel)pnmObj).BaseVoltage == 0)
+                    throw new Exception("VoltageLevel with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
+
+                var vl = pnmObj as PhysicalNetworkModel.VoltageLevel;
+                var baseVoltage = mapContext.GetOrCreateBaseVoltage(vl.BaseVoltage);
+                ((Equipment.VoltageLevel)netSamObj).BaseVoltage = new Equipment.VoltageLevelBaseVoltage() { @ref = baseVoltage.mRID };
+            }
+
+            // Handle base voltage on transformer ends
+            if (pnmObj is PhysicalNetworkModel.TransformerEnd)
+            {
+                if (((PhysicalNetworkModel.TransformerEnd)pnmObj).BaseVoltage == 0)
+                    throw new Exception("TransformerEnd with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
+
+                var te = pnmObj as PhysicalNetworkModel.TransformerEnd;
+                var baseVoltage = mapContext.GetOrCreateBaseVoltage(te.BaseVoltage);
+                ((Equipment.TransformerEnd)netSamObj).BaseVoltage = new Equipment.TransformerEndBaseVoltage() { @ref = baseVoltage.mRID };
+            }
+
 
             // Handle position points
             if (pnmObj is PhysicalNetworkModel.LocationExt && ((PhysicalNetworkModel.LocationExt)pnmObj).coordinates != null)
