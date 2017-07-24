@@ -92,7 +92,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         [TestMethod]
         public void MapEngumTest()
         {
-            var converter = new NetSamEquipmentXMLConverter(_cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor() });
+            var converter = new NetSamEquipmentXMLConverter(_cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
 
             var xmlProfile = converter.GetXMLData();
 
@@ -115,7 +115,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
 
                 Assert.IsTrue(CimObjUniquenessChecker.IsUnique(cimObjects));
 
-                var converter = new NetSamEquipmentXMLConverter(cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor() });
+                var converter = new NetSamEquipmentXMLConverter(cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
 
                 var result = converter.GetCimObjects();
                 Assert.IsTrue(CimObjUniquenessChecker.IsUnique(result));

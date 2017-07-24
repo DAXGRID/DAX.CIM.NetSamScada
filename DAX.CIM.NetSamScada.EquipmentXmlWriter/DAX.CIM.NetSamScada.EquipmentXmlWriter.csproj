@@ -68,6 +68,7 @@
     <Compile Include="PreProcessors\AddMissingBayProcessor.cs" />
     <Compile Include="PreProcessors\DisconnectedLinkProcessor.cs" />
     <Compile Include="PreProcessors\IPreProcessor.cs" />
+    <Compile Include="PreProcessors\EnsureACLSUniqueNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
