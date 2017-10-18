@@ -35,7 +35,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                         var newBay = new BayExt();
                         newBay.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(sw.mRID), _guidOffset + 1, true).ToString();
                         newBay.name = sw.name + " bay";
-                        newBay.description = "Auto generated bay";
+                        newBay.description = "Auto generated sectionalizer bay";
 
                         // Get the substation voltage level that the bay must reference
                         var vl = sw.GetSubstation(true, context).GetVoltageLevel(sw.BaseVoltage, true, context);

@@ -7,6 +7,7 @@ using System.Linq;
 using DAX.CIM.NetSamScada.PreProcessors;
 using System.Xml.Serialization;
 using DAX.CIM.PhysicalNetworkModel.Traversal;
+using DAX.CIM.PhysicalNetworkModel;
 
 namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
 {
@@ -84,7 +85,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
             // Try do an XML mapping on it
             var converter = new NetSamEquipmentXMLConverter(cimObjects);
 
-            var xmlProfile = converter.GetXMLData();
+            var xmlProfile = converter.GetXMLData(converter.GetCimObjects().ToList());
 
 
         }
@@ -94,7 +95,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         {
             var converter = new NetSamEquipmentXMLConverter(_cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
 
-            var xmlProfile = converter.GetXMLData();
+            var xmlProfile = converter.GetXMLData(converter.GetCimObjects().ToList());
 
             XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
             System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\ny_engum.xml");
@@ -117,12 +118,23 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
 
                 var converter = new NetSamEquipmentXMLConverter(cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
 
-                var result = converter.GetCimObjects();
+                var result = converter.GetCimObjects().ToList();
                 Assert.IsTrue(CimObjUniquenessChecker.IsUnique(result));
 
-                var xmlProfile = converter.GetXMLData();
+                var xmlProfile = converter.GetXMLData(result);
 
+                var disTest = cimObjects.Find(o => o.mRID == "b23c83e3-dc01-4748-acde-c19c80b934e2") as Disconnector;
+
+                var disBayTest = result.Find(o => o.mRID == disTest.EquipmentContainer.@ref);
+
+                // Check at DisconnectedLinkProcessor disconnectors er kommet med ud i xml
                 Assert.IsTrue(xmlProfile.Disconnector.ToList().Exists(o => o.description == "Auto generated DL"));
+
+                // Check at DisconnectedLinkProcessor bays er kommet med ud i xml
+                Assert.IsTrue(xmlProfile.BayExt.ToList().Exists(o => o.description == "Auto generated DL Bay"));
+
+                // Check at AddMissingBayProcessor bays er kommet med ud i xml
+                Assert.IsTrue(xmlProfile.BayExt.ToList().Exists(o => o.mRID == disTest.EquipmentContainer.@ref));
 
                 XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
                 System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\complete_net.xml");

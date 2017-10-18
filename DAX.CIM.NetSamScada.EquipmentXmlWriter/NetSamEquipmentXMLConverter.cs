@@ -40,11 +40,11 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
                 yield return obj;
         }
 
-        public ProfileEnvelop GetXMLData()
+        public ProfileEnvelop GetXMLData(List<PhysicalNetworkModel.IdentifiedObject> cimObjects)
         {
             ProfileEnvelop profile = new ProfileEnvelop();
 
-            var afterProcessing = GetCimObjects().ToList();
+            var afterProcessing = cimObjects;
 
             List<Equipment.IdentifiedObject> mappedObjects = new List<Equipment.IdentifiedObject>();
 
