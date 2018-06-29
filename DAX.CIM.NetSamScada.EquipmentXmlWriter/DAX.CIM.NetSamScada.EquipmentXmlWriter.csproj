@@ -35,19 +35,25 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="DAX.CIM.PhysicalNetworkModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.0.1.9-beta01\lib\NET45\DAX.CIM.PhysicalNetworkModel.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.1.1\lib\NET45\DAX.CIM.PhysicalNetworkModel.dll</HintPath>
     </Reference>
-    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastMember.1.1.0\lib\net40\FastMember.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DAX.CIM.PhysicalNetworkModel.FeederInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.1.1\lib\NET45\DAX.CIM.PhysicalNetworkModel.FeederInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="DAX.CIM.PhysicalNetworkModel.LineInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.1.1\lib\NET45\DAX.CIM.PhysicalNetworkModel.LineInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="DAX.CIM.PhysicalNetworkModel.Traversal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.1.1\lib\NET45\DAX.CIM.PhysicalNetworkModel.Traversal.dll</HintPath>
+    </Reference>
+    <Reference Include="DAX.Cson, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAX.Cson.1.0.0-b04\lib\NET45\DAX.Cson.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.3.0\lib\net45\FastMember.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NRGi.Cson, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NRGi.Cson.0.1.0-beta07\lib\NET45\NRGi.Cson.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -76,14 +82,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\DAX.CIM.CoreModels\DAX.CIM.PhysicalNetworkModel.LineInfo\DAX.CIM.PhysicalNetworkModel.LineInfo.csproj">
-      <Project>{df457603-7cbd-45b8-be11-f1d52f43cedc}</Project>
-      <Name>DAX.CIM.PhysicalNetworkModel.LineInfo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\DAX.CIM.CoreModels\DAX.CIM.PhysicalNetworkModel.Traversal\DAX.CIM.PhysicalNetworkModel.Traversal.csproj">
-      <Project>{2fe2e018-b583-4561-a141-44a71fefb352}</Project>
-      <Name>DAX.CIM.PhysicalNetworkModel.Traversal</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAX.CIM.NetSamScada.XMLSchemas\DAX.CIM.NetSamScada.XMLSchemas.csproj">
       <Project>{6c253adb-6b01-45f0-8d6c-85dc337e42a5}</Project>
       <Name>DAX.CIM.NetSamScada.XMLSchemas</Name>

@@ -98,7 +98,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
             var xmlProfile = converter.GetXMLData(converter.GetCimObjects().ToList());
 
             XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
-            System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\ny_engum.xml");
+            System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\engum_anonymized_net.xml");
             xmlSerializer.Serialize(file, xmlProfile);
             file.Close();
 
@@ -107,7 +107,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         [TestMethod]
         public void CompleteNrgiTest()
         {
-            bool run = true;
+            bool run = false;
 
             if (run)
             {
