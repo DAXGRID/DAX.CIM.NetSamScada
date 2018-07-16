@@ -1,0 +1,54 @@
+Add under Location:
+
+  <xs:complexType name="LocationExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/Net-Sam-SCADA/Net-Sam-SCADA Extension#LocationExt">
+    <xs:annotation>
+      <xs:documentation>Extension to location to support inline position points to support delta</xs:documentation>
+      <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="cim:Location">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="positionPoints" type="cim:PositionPoints">
+            <xs:annotation>
+              <xs:documentation>Position points.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PositionPoints">
+    <xs:annotation>
+      <xs:documentation>
+        Koordinatinformation.
+
+        Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to desribe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PositionPoint" type="cim:PositionPoint">
+        <xs:annotation>
+          <xs:documentation>Zero-relative sequence number of this point within a series of points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="CoordinateSystem" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61968/Common#Location.CoordinateSystem">
+        <xs:annotation>
+          <xs:documentation>Coordinate system used to describe position points of this location.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="referenceType" type="xs:string" use="optional" />
+          <xs:attribute name="ref" type="xs:string">
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+
+
+
+
+

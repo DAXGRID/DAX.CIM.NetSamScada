@@ -13,7 +13,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
 {
     public class DisconnectedLinkProcessor : IPreProcessor
     {
-        int _guidOffset = 1000;
+        //int _guidOffset = 1000; // Don't work of course.. will change all guids if an trafo is addede DOH!
       
         public IEnumerable<IdentifiedObject> Transform(CimContext context, IEnumerable<IdentifiedObject> input)
         {
@@ -37,6 +37,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                         // If power transformer is connected directly to an ACLS then add disconnected link switch (PSI thing) in between
                         if (neighbor is ACLineSegment && neighbor.PSRType != "InternalCable")
                         {
+                            int guidOffset = 1000;
                             var acls = neighbor as ACLineSegment;
 
                             // Get the terminal of the ACLS that is connected to the power transformer
@@ -47,12 +48,12 @@ namespace DAX.CIM.NetSamScada.PreProcessors
 
                             // Create a new CN to be used between ACLS and DL switch
                             var newCn = new ConnectivityNode();
-                            newCn.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), _guidOffset++, true).ToString();
+                            newCn.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), guidOffset++, true).ToString();
                             newObjects.Add(newCn);
 
                             // Create bay to hold disconnected link switch
                             var newBay = new BayExt();
-                            newBay.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), _guidOffset++, true).ToString();
+                            newBay.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), guidOffset++, true).ToString();
                             newBay.VoltageLevel = new BayVoltageLevel() { @ref = pt.GetSubstation(true, context).GetVoltageLevel(acls.BaseVoltage, true, context).mRID };
                             newBay.name = pt.name + " DL";
                             newBay.description = "Auto generated DL Bay";
@@ -60,7 +61,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
 
                             // Create disconnected link switch
                             var newSw = new Disconnector();
-                            newSw.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), _guidOffset++, true).ToString();
+                            newSw.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), guidOffset++, true).ToString();
                             newSw.PSRType = "DisconnectingLink";
                             newSw.EquipmentContainer = new EquipmentEquipmentContainer() { @ref = newBay.mRID };
                             newSw.BaseVoltage = acls.BaseVoltage;
@@ -70,7 +71,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
 
                             // Create disconnected link terminal 1, and connected it to existing PT CN
                             var newSwT1 = new Terminal();
-                            newSwT1.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), _guidOffset++, true).ToString();
+                            newSwT1.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), guidOffset++, true).ToString();
                             newSwT1.phases = PhaseCode.ABC;
                             newSwT1.sequenceNumber = "1";
                             newSwT1.ConductingEquipment = new TerminalConductingEquipment() { @ref = newSw.mRID };
@@ -79,7 +80,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
 
                             // Create disconnected link terminal 2, and connected it to newCN
                             var newSwT2 = new Terminal();
-                            newSwT2.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), _guidOffset++, true).ToString();
+                            newSwT2.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(acls.mRID), guidOffset++, true).ToString();
                             newSwT2.phases = PhaseCode.ABC;
                             newSwT2.sequenceNumber = "2";
                             newSwT2.ConductingEquipment = new TerminalConductingEquipment() { @ref = newSw.mRID };

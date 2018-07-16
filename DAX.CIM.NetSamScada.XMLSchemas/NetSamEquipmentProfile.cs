@@ -20,11 +20,9 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4", IsNullable=false)]
     public partial class ProfileEnvelop {
-        
-        private ConnectivityNodeContainer[] connectivityNodeContainerField;
         
         private Asset[] assetField;
         
@@ -37,6 +35,10 @@ namespace DAX.CIM.NetSamScada.Equipment {
         private Location[] locationField;
         
         private PositionPoint[] positionPointField;
+        
+        private GeneratingUnit[] generatingUnitField;
+        
+        private GeneratingUnitExt[] generatingUnitExtField;
         
         private UsagePoint[] usagePointField;
         
@@ -73,6 +75,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
         private Breaker[] breakerField;
         
         private BusbarSection[] busbarSectionField;
+        
+        private ConnectivityNodeContainer[] connectivityNodeContainerField;
         
         private CurrentTransformer[] currentTransformerField;
         
@@ -125,17 +129,6 @@ namespace DAX.CIM.NetSamScada.Equipment {
         private SynchronousMachine[] synchronousMachineField;
         
         private TapSchedule[] tapScheduleField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ConnectivityNodeContainer")]
-        public ConnectivityNodeContainer[] ConnectivityNodeContainer {
-            get {
-                return this.connectivityNodeContainerField;
-            }
-            set {
-                this.connectivityNodeContainerField = value;
-            }
-        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Asset")]
@@ -200,6 +193,28 @@ namespace DAX.CIM.NetSamScada.Equipment {
             }
             set {
                 this.positionPointField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("GeneratingUnit")]
+        public GeneratingUnit[] GeneratingUnit {
+            get {
+                return this.generatingUnitField;
+            }
+            set {
+                this.generatingUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("GeneratingUnitExt")]
+        public GeneratingUnitExt[] GeneratingUnitExt {
+            get {
+                return this.generatingUnitExtField;
+            }
+            set {
+                this.generatingUnitExtField = value;
             }
         }
         
@@ -398,6 +413,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
             }
             set {
                 this.busbarSectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ConnectivityNodeContainer")]
+        public ConnectivityNodeContainer[] ConnectivityNodeContainer {
+            get {
+                return this.connectivityNodeContainerField;
+            }
+            set {
+                this.connectivityNodeContainerField = value;
             }
         }
         
@@ -689,2263 +715,40 @@ namespace DAX.CIM.NetSamScada.Equipment {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EquipmentContainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ConnectivityNodeContainer : PowerSystemResource {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TapChanger))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RatioTapChanger))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Equipment))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AuxiliaryEquipment))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Sensor))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrentTransformer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrentTransformerExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FaultIndicator))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FaultIndicatorExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConductingEquipment))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Switch))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProtectedSwitch))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoadBreakSwitch))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Breaker))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GroundDisconnector))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Fuse))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Disconnector))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SeriesCompensator))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegulatingCondEq))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ShuntCompensator))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(NonlinearShuntCompensator))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearShuntCompensator))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RotatingMachine))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SynchronousMachine))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AsynchronousMachine))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ExternalNetworkInjection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Ground))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EnergyConsumer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EarthFaultCompensator))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PetersenCoil))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GroundingImpedance))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Connector))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusbarSection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Conductor))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegment))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegmentExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConnectivityNodeContainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EquipmentContainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public abstract partial class PowerSystemResource : IdentifiedObject {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Asset : IdentifiedObject {
         
-        private PowerSystemResourcePSRType pSRTypeField;
+        private string lotNumberField;
         
-        private PowerSystemResourceLocation locationField;
-        
-        private PowerSystemResourceAssets assetsField;
-        
-        /// <remarks/>
-        public PowerSystemResourcePSRType PSRType {
-            get {
-                return this.pSRTypeField;
-            }
-            set {
-                this.pSRTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PowerSystemResourceLocation Location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PowerSystemResourceAssets Assets {
-            get {
-                return this.assetsField;
-            }
-            set {
-                this.assetsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class PowerSystemResourcePSRType {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class TapSchedule {
-        
-        private TapScheduleTapChanger tapChangerField;
-        
-        /// <remarks/>
-        public TapScheduleTapChanger TapChanger {
-            get {
-                return this.tapChangerField;
-            }
-            set {
-                this.tapChangerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class TapScheduleTapChanger {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ReactiveCapabilityCurve {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class NonlinearShuntCompensatorPoint {
-        
-        private Susceptance bField;
-        
-        private Susceptance b0Field;
-        
-        private Conductance gField;
-        
-        private Conductance g0Field;
-        
-        private string sectionNumberField;
-        
-        private NonlinearShuntCompensatorPointNonlinearShuntCompensator nonlinearShuntCompensatorField;
-        
-        /// <remarks/>
-        public Susceptance b {
-            get {
-                return this.bField;
-            }
-            set {
-                this.bField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Susceptance b0 {
-            get {
-                return this.b0Field;
-            }
-            set {
-                this.b0Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Conductance g {
-            get {
-                return this.gField;
-            }
-            set {
-                this.gField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Conductance g0 {
-            get {
-                return this.g0Field;
-            }
-            set {
-                this.g0Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string sectionNumber {
-            get {
-                return this.sectionNumberField;
-            }
-            set {
-                this.sectionNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public NonlinearShuntCompensatorPointNonlinearShuntCompensator NonlinearShuntCompensator {
-            get {
-                return this.nonlinearShuntCompensatorField;
-            }
-            set {
-                this.nonlinearShuntCompensatorField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Susceptance {
-        
-        private UnitMultiplier multiplierField;
-        
-        private bool multiplierFieldSpecified;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private string valueField;
-        
-        public Susceptance() {
-            this.unitField = UnitSymbol.S;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool multiplierSpecified {
-            get {
-                return this.multiplierFieldSpecified;
-            }
-            set {
-                this.multiplierFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public enum UnitMultiplier {
-        
-        /// <remarks/>
-        c,
-        
-        /// <remarks/>
-        d,
-        
-        /// <remarks/>
-        G,
-        
-        /// <remarks/>
-        k,
-        
-        /// <remarks/>
-        m,
-        
-        /// <remarks/>
-        M,
-        
-        /// <remarks/>
-        micro,
-        
-        /// <remarks/>
-        n,
-        
-        /// <remarks/>
-        none,
-        
-        /// <remarks/>
-        p,
-        
-        /// <remarks/>
-        T,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public enum UnitSymbol {
-        
-        /// <remarks/>
-        A,
-        
-        /// <remarks/>
-        deg,
-        
-        /// <remarks/>
-        degC,
-        
-        /// <remarks/>
-        F,
-        
-        /// <remarks/>
-        g,
-        
-        /// <remarks/>
-        h,
-        
-        /// <remarks/>
-        H,
-        
-        /// <remarks/>
-        Hz,
-        
-        /// <remarks/>
-        J,
-        
-        /// <remarks/>
-        m,
-        
-        /// <remarks/>
-        m2,
-        
-        /// <remarks/>
-        m3,
-        
-        /// <remarks/>
-        min,
-        
-        /// <remarks/>
-        N,
-        
-        /// <remarks/>
-        none,
-        
-        /// <remarks/>
-        ohm,
-        
-        /// <remarks/>
-        Pa,
-        
-        /// <remarks/>
-        rad,
-        
-        /// <remarks/>
-        s,
-        
-        /// <remarks/>
-        S,
-        
-        /// <remarks/>
-        V,
-        
-        /// <remarks/>
-        VA,
-        
-        /// <remarks/>
-        VAh,
-        
-        /// <remarks/>
-        VAr,
-        
-        /// <remarks/>
-        VArh,
-        
-        /// <remarks/>
-        W,
-        
-        /// <remarks/>
-        Wh,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Conductance {
-        
-        private UnitMultiplier multiplierField;
-        
-        private bool multiplierFieldSpecified;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private string valueField;
-        
-        public Conductance() {
-            this.unitField = UnitSymbol.S;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool multiplierSpecified {
-            get {
-                return this.multiplierFieldSpecified;
-            }
-            set {
-                this.multiplierFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class NonlinearShuntCompensatorPointNonlinearShuntCompensator {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class NameType {
-        
-        private string descriptionField;
-        
-        private string nameField;
-        
-        /// <remarks/>
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Name {
-        
-        private string nameField;
-        
-        private NameNameType nameTypeField;
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public NameNameType NameType {
-            get {
-                return this.nameTypeField;
-            }
-            set {
-                this.nameTypeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class NameNameType {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class PositionPoint {
-        
-        private string sequenceNumberField;
-        
-        private string xPositionField;
-        
-        private string yPositionField;
-        
-        private PositionPointLocation locationField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string sequenceNumber {
-            get {
-                return this.sequenceNumberField;
-            }
-            set {
-                this.sequenceNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string xPosition {
-            get {
-                return this.xPositionField;
-            }
-            set {
-                this.xPositionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string yPosition {
-            get {
-                return this.yPositionField;
-            }
-            set {
-                this.yPositionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PositionPointLocation Location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class PositionPointLocation {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Maintainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOwner))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public abstract partial class AssetOrganisationRole {
-        
-        private string mRIDField;
-        
-        private string nameField;
-        
-        /// <remarks/>
-        public string mRID {
-            get {
-                return this.mRIDField;
-            }
-            set {
-                this.mRIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Maintainer : AssetOrganisationRole {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class AssetOwner : AssetOrganisationRole {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class KiloActivePower {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private string valueField;
-        
-        public KiloActivePower() {
-            this.unitField = UnitSymbol.W;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class VoltagePerReactivePower {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public VoltagePerReactivePower() {
-            this.unitField = UnitSymbol.V;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Seconds {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public Seconds() {
-            this.unitField = UnitSymbol.s;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class RotationSpeed {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public RotationSpeed() {
-            this.unitField = UnitSymbol.none;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Frequency {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public Frequency() {
-            this.multiplierField = UnitMultiplier.none;
-            this.unitField = UnitSymbol.Hz;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        [System.ComponentModel.DefaultValueAttribute(UnitMultiplier.none)]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class PerCent {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public PerCent() {
-            this.unitField = UnitSymbol.none;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ApparentPower {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public ApparentPower() {
-            this.unitField = UnitSymbol.VA;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class PU {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public PU() {
-            this.unitField = UnitSymbol.none;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ReactivePower {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public ReactivePower() {
-            this.unitField = UnitSymbol.VAr;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ActivePower {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public ActivePower() {
-            this.unitField = UnitSymbol.W;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ActivePowerPerFrequency {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public ActivePowerPerFrequency() {
-            this.unitField = UnitSymbol.W;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class CurrentFlow {
-        
-        private UnitMultiplier multiplierField;
-        
-        private bool multiplierFieldSpecified;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private string valueField;
-        
-        public CurrentFlow() {
-            this.unitField = UnitSymbol.A;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool multiplierSpecified {
-            get {
-                return this.multiplierFieldSpecified;
-            }
-            set {
-                this.multiplierFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Capacitance {
-        
-        private UnitMultiplier multiplierField;
-        
-        private bool multiplierFieldSpecified;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private string valueField;
-        
-        public Capacitance() {
-            this.unitField = UnitSymbol.F;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool multiplierSpecified {
-            get {
-                return this.multiplierFieldSpecified;
-            }
-            set {
-                this.multiplierFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Reactance {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public Reactance() {
-            this.unitField = UnitSymbol.ohm;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Resistance {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public Resistance() {
-            this.unitField = UnitSymbol.ohm;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Length {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public Length() {
-            this.unitField = UnitSymbol.m;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Voltage {
-        
-        private UnitMultiplier multiplierField;
-        
-        private UnitSymbol unitField;
-        
-        private bool unitFieldSpecified;
-        
-        private float valueField;
-        
-        public Voltage() {
-            this.unitField = UnitSymbol.V;
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitMultiplier multiplier {
-            get {
-                return this.multiplierField;
-            }
-            set {
-                this.multiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public UnitSymbol unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unitSpecified {
-            get {
-                return this.unitFieldSpecified;
-            }
-            set {
-                this.unitFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public float Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class TelephoneNumber {
-        
-        private string countryCodeField;
-        
-        private string areaCodeField;
-        
-        private string cityCodeField;
-        
-        private string localNumberField;
-        
-        private string extensionField;
-        
-        /// <remarks/>
-        public string countryCode {
-            get {
-                return this.countryCodeField;
-            }
-            set {
-                this.countryCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string areaCode {
-            get {
-                return this.areaCodeField;
-            }
-            set {
-                this.areaCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string cityCode {
-            get {
-                return this.cityCodeField;
-            }
-            set {
-                this.cityCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string localNumber {
-            get {
-                return this.localNumberField;
-            }
-            set {
-                this.localNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string extension {
-            get {
-                return this.extensionField;
-            }
-            set {
-                this.extensionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Status {
-        
-        private string valueField;
-        
-        private System.DateTime dateTimeField;
-        
-        private bool dateTimeFieldSpecified;
-        
-        private string remarkField;
-        
-        private string reasonField;
-        
-        /// <remarks/>
-        public string value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime dateTime {
-            get {
-                return this.dateTimeField;
-            }
-            set {
-                this.dateTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dateTimeSpecified {
-            get {
-                return this.dateTimeFieldSpecified;
-            }
-            set {
-                this.dateTimeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string remark {
-            get {
-                return this.remarkField;
-            }
-            set {
-                this.remarkField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string reason {
-            get {
-                return this.reasonField;
-            }
-            set {
-                this.reasonField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class TownDetail {
-        
-        private string codeField;
-        
-        private string sectionField;
-        
-        private string nameField;
-        
-        private string stateOrProvinceField;
-        
-        private string countryField;
-        
-        /// <remarks/>
-        public string code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string section {
-            get {
-                return this.sectionField;
-            }
-            set {
-                this.sectionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string stateOrProvince {
-            get {
-                return this.stateOrProvinceField;
-            }
-            set {
-                this.stateOrProvinceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string country {
-            get {
-                return this.countryField;
-            }
-            set {
-                this.countryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class StreetDetail {
-        
-        private string numberField;
-        
-        private string nameField;
-        
-        private string suffixField;
-        
-        private string prefixField;
+        private string serialNumberField;
         
         private string typeField;
         
-        private string codeField;
+        private LifecycleDate lifecycleField;
         
-        private string buildingNameField;
-        
-        private string suiteNumberField;
-        
-        private string addressGeneralField;
-        
-        private bool withinTownLimitsField;
-        
-        private bool withinTownLimitsFieldSpecified;
+        private AssetOrganisationRoles[] organisationRolesField;
         
         /// <remarks/>
-        public string number {
+        public string lotNumber {
             get {
-                return this.numberField;
+                return this.lotNumberField;
             }
             set {
-                this.numberField = value;
+                this.lotNumberField = value;
             }
         }
         
         /// <remarks/>
-        public string name {
+        public string serialNumber {
             get {
-                return this.nameField;
+                return this.serialNumberField;
             }
             set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string suffix {
-            get {
-                return this.suffixField;
-            }
-            set {
-                this.suffixField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string prefix {
-            get {
-                return this.prefixField;
-            }
-            set {
-                this.prefixField = value;
+                this.serialNumberField = value;
             }
         }
         
@@ -2960,63 +763,23 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
-        public string code {
+        public LifecycleDate lifecycle {
             get {
-                return this.codeField;
+                return this.lifecycleField;
             }
             set {
-                this.codeField = value;
+                this.lifecycleField = value;
             }
         }
         
         /// <remarks/>
-        public string buildingName {
+        [System.Xml.Serialization.XmlElementAttribute("OrganisationRoles")]
+        public AssetOrganisationRoles[] OrganisationRoles {
             get {
-                return this.buildingNameField;
+                return this.organisationRolesField;
             }
             set {
-                this.buildingNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string suiteNumber {
-            get {
-                return this.suiteNumberField;
-            }
-            set {
-                this.suiteNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string addressGeneral {
-            get {
-                return this.addressGeneralField;
-            }
-            set {
-                this.addressGeneralField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool withinTownLimits {
-            get {
-                return this.withinTownLimitsField;
-            }
-            set {
-                this.withinTownLimitsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool withinTownLimitsSpecified {
-            get {
-                return this.withinTownLimitsFieldSpecified;
-            }
-            set {
-                this.withinTownLimitsFieldSpecified = value;
+                this.organisationRolesField = value;
             }
         }
     }
@@ -3026,52 +789,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class StreetAddress {
-        
-        private StreetDetail streetDetailField;
-        
-        private TownDetail townDetailField;
-        
-        private Status statusField;
-        
-        /// <remarks/>
-        public StreetDetail streetDetail {
-            get {
-                return this.streetDetailField;
-            }
-            set {
-                this.streetDetailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TownDetail townDetail {
-            get {
-                return this.townDetailField;
-            }
-            set {
-                this.townDetailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Status status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class LifecycleDate {
         
         private System.DateTime manufacturedDateField;
@@ -3232,6 +950,2316 @@ namespace DAX.CIM.NetSamScada.Equipment {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class TapSchedule {
+        
+        private TapScheduleTapChanger tapChangerField;
+        
+        /// <remarks/>
+        public TapScheduleTapChanger TapChanger {
+            get {
+                return this.tapChangerField;
+            }
+            set {
+                this.tapChangerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class TapScheduleTapChanger {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ReactiveCapabilityCurve {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class NonlinearShuntCompensatorPoint {
+        
+        private Susceptance bField;
+        
+        private Susceptance b0Field;
+        
+        private Conductance gField;
+        
+        private Conductance g0Field;
+        
+        private string sectionNumberField;
+        
+        private NonlinearShuntCompensatorPointNonlinearShuntCompensator nonlinearShuntCompensatorField;
+        
+        /// <remarks/>
+        public Susceptance b {
+            get {
+                return this.bField;
+            }
+            set {
+                this.bField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Susceptance b0 {
+            get {
+                return this.b0Field;
+            }
+            set {
+                this.b0Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Conductance g {
+            get {
+                return this.gField;
+            }
+            set {
+                this.gField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Conductance g0 {
+            get {
+                return this.g0Field;
+            }
+            set {
+                this.g0Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
+        public string sectionNumber {
+            get {
+                return this.sectionNumberField;
+            }
+            set {
+                this.sectionNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NonlinearShuntCompensatorPointNonlinearShuntCompensator NonlinearShuntCompensator {
+            get {
+                return this.nonlinearShuntCompensatorField;
+            }
+            set {
+                this.nonlinearShuntCompensatorField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Susceptance {
+        
+        private UnitMultiplier multiplierField;
+        
+        private bool multiplierFieldSpecified;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private string valueField;
+        
+        public Susceptance() {
+            this.unitField = UnitSymbol.S;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool multiplierSpecified {
+            get {
+                return this.multiplierFieldSpecified;
+            }
+            set {
+                this.multiplierFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public enum UnitMultiplier {
+        
+        /// <remarks/>
+        c,
+        
+        /// <remarks/>
+        d,
+        
+        /// <remarks/>
+        G,
+        
+        /// <remarks/>
+        k,
+        
+        /// <remarks/>
+        m,
+        
+        /// <remarks/>
+        M,
+        
+        /// <remarks/>
+        micro,
+        
+        /// <remarks/>
+        n,
+        
+        /// <remarks/>
+        none,
+        
+        /// <remarks/>
+        p,
+        
+        /// <remarks/>
+        T,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public enum UnitSymbol {
+        
+        /// <remarks/>
+        A,
+        
+        /// <remarks/>
+        deg,
+        
+        /// <remarks/>
+        degC,
+        
+        /// <remarks/>
+        F,
+        
+        /// <remarks/>
+        g,
+        
+        /// <remarks/>
+        h,
+        
+        /// <remarks/>
+        H,
+        
+        /// <remarks/>
+        Hz,
+        
+        /// <remarks/>
+        J,
+        
+        /// <remarks/>
+        m,
+        
+        /// <remarks/>
+        m2,
+        
+        /// <remarks/>
+        m3,
+        
+        /// <remarks/>
+        min,
+        
+        /// <remarks/>
+        N,
+        
+        /// <remarks/>
+        none,
+        
+        /// <remarks/>
+        ohm,
+        
+        /// <remarks/>
+        Pa,
+        
+        /// <remarks/>
+        rad,
+        
+        /// <remarks/>
+        s,
+        
+        /// <remarks/>
+        S,
+        
+        /// <remarks/>
+        V,
+        
+        /// <remarks/>
+        VA,
+        
+        /// <remarks/>
+        VAh,
+        
+        /// <remarks/>
+        VAr,
+        
+        /// <remarks/>
+        VArh,
+        
+        /// <remarks/>
+        W,
+        
+        /// <remarks/>
+        Wh,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Conductance {
+        
+        private UnitMultiplier multiplierField;
+        
+        private bool multiplierFieldSpecified;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private string valueField;
+        
+        public Conductance() {
+            this.unitField = UnitSymbol.S;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool multiplierSpecified {
+            get {
+                return this.multiplierFieldSpecified;
+            }
+            set {
+                this.multiplierFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class NonlinearShuntCompensatorPointNonlinearShuntCompensator {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class NameType {
+        
+        private string descriptionField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Name {
+        
+        private string nameField;
+        
+        private NameNameType nameTypeField;
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NameNameType NameType {
+            get {
+                return this.nameTypeField;
+            }
+            set {
+                this.nameTypeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class NameNameType {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Maintainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOwner))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public abstract partial class AssetOrganisationRole {
+        
+        private string mRIDField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string mRID {
+            get {
+                return this.mRIDField;
+            }
+            set {
+                this.mRIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Maintainer : AssetOrganisationRole {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class AssetOwner : AssetOrganisationRole {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class KiloActivePower {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private string valueField;
+        
+        public KiloActivePower() {
+            this.unitField = UnitSymbol.W;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class VoltagePerReactivePower {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public VoltagePerReactivePower() {
+            this.unitField = UnitSymbol.V;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Seconds {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public Seconds() {
+            this.unitField = UnitSymbol.s;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class RotationSpeed {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public RotationSpeed() {
+            this.unitField = UnitSymbol.none;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Frequency {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public Frequency() {
+            this.multiplierField = UnitMultiplier.none;
+            this.unitField = UnitSymbol.Hz;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(UnitMultiplier.none)]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PerCent {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public PerCent() {
+            this.unitField = UnitSymbol.none;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ApparentPower {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public ApparentPower() {
+            this.unitField = UnitSymbol.VA;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PU {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public PU() {
+            this.unitField = UnitSymbol.none;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ReactivePower {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public ReactivePower() {
+            this.unitField = UnitSymbol.VAr;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ActivePower {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public ActivePower() {
+            this.unitField = UnitSymbol.W;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ActivePowerPerFrequency {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public ActivePowerPerFrequency() {
+            this.unitField = UnitSymbol.W;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class CurrentFlow {
+        
+        private UnitMultiplier multiplierField;
+        
+        private bool multiplierFieldSpecified;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private string valueField;
+        
+        public CurrentFlow() {
+            this.unitField = UnitSymbol.A;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool multiplierSpecified {
+            get {
+                return this.multiplierFieldSpecified;
+            }
+            set {
+                this.multiplierFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Capacitance {
+        
+        private UnitMultiplier multiplierField;
+        
+        private bool multiplierFieldSpecified;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private string valueField;
+        
+        public Capacitance() {
+            this.unitField = UnitSymbol.F;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool multiplierSpecified {
+            get {
+                return this.multiplierFieldSpecified;
+            }
+            set {
+                this.multiplierFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Reactance {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public Reactance() {
+            this.unitField = UnitSymbol.ohm;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Resistance {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public Resistance() {
+            this.unitField = UnitSymbol.ohm;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Length {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public Length() {
+            this.unitField = UnitSymbol.m;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Voltage {
+        
+        private UnitMultiplier multiplierField;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private float valueField;
+        
+        public Voltage() {
+            this.unitField = UnitSymbol.V;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public float Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PositionPoint {
+        
+        private string sequenceNumberField;
+        
+        private string xPositionField;
+        
+        private string yPositionField;
+        
+        private PositionPointLocation locationField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
+        public string sequenceNumber {
+            get {
+                return this.sequenceNumberField;
+            }
+            set {
+                this.sequenceNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string xPosition {
+            get {
+                return this.xPositionField;
+            }
+            set {
+                this.xPositionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string yPosition {
+            get {
+                return this.yPositionField;
+            }
+            set {
+                this.yPositionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PositionPointLocation Location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PositionPointLocation {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PositionPoints {
+        
+        private PositionPoint[] positionPointField;
+        
+        private PositionPointsCoordinateSystem coordinateSystemField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PositionPoint")]
+        public PositionPoint[] PositionPoint {
+            get {
+                return this.positionPointField;
+            }
+            set {
+                this.positionPointField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PositionPointsCoordinateSystem CoordinateSystem {
+            get {
+                return this.coordinateSystemField;
+            }
+            set {
+                this.coordinateSystemField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PositionPointsCoordinateSystem {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class TelephoneNumber {
+        
+        private string countryCodeField;
+        
+        private string areaCodeField;
+        
+        private string cityCodeField;
+        
+        private string localNumberField;
+        
+        private string extensionField;
+        
+        /// <remarks/>
+        public string countryCode {
+            get {
+                return this.countryCodeField;
+            }
+            set {
+                this.countryCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string areaCode {
+            get {
+                return this.areaCodeField;
+            }
+            set {
+                this.areaCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cityCode {
+            get {
+                return this.cityCodeField;
+            }
+            set {
+                this.cityCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string localNumber {
+            get {
+                return this.localNumberField;
+            }
+            set {
+                this.localNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string extension {
+            get {
+                return this.extensionField;
+            }
+            set {
+                this.extensionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Status {
+        
+        private string valueField;
+        
+        private System.DateTime dateTimeField;
+        
+        private bool dateTimeFieldSpecified;
+        
+        private string remarkField;
+        
+        private string reasonField;
+        
+        /// <remarks/>
+        public string value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime dateTime {
+            get {
+                return this.dateTimeField;
+            }
+            set {
+                this.dateTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dateTimeSpecified {
+            get {
+                return this.dateTimeFieldSpecified;
+            }
+            set {
+                this.dateTimeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string reason {
+            get {
+                return this.reasonField;
+            }
+            set {
+                this.reasonField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class TownDetail {
+        
+        private string codeField;
+        
+        private string sectionField;
+        
+        private string nameField;
+        
+        private string stateOrProvinceField;
+        
+        private string countryField;
+        
+        /// <remarks/>
+        public string code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string section {
+            get {
+                return this.sectionField;
+            }
+            set {
+                this.sectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string stateOrProvince {
+            get {
+                return this.stateOrProvinceField;
+            }
+            set {
+                this.stateOrProvinceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string country {
+            get {
+                return this.countryField;
+            }
+            set {
+                this.countryField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class StreetDetail {
+        
+        private string numberField;
+        
+        private string nameField;
+        
+        private string suffixField;
+        
+        private string prefixField;
+        
+        private string typeField;
+        
+        private string codeField;
+        
+        private string buildingNameField;
+        
+        private string suiteNumberField;
+        
+        private string addressGeneralField;
+        
+        private bool withinTownLimitsField;
+        
+        private bool withinTownLimitsFieldSpecified;
+        
+        /// <remarks/>
+        public string number {
+            get {
+                return this.numberField;
+            }
+            set {
+                this.numberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string suffix {
+            get {
+                return this.suffixField;
+            }
+            set {
+                this.suffixField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string prefix {
+            get {
+                return this.prefixField;
+            }
+            set {
+                this.prefixField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string buildingName {
+            get {
+                return this.buildingNameField;
+            }
+            set {
+                this.buildingNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string suiteNumber {
+            get {
+                return this.suiteNumberField;
+            }
+            set {
+                this.suiteNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string addressGeneral {
+            get {
+                return this.addressGeneralField;
+            }
+            set {
+                this.addressGeneralField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool withinTownLimits {
+            get {
+                return this.withinTownLimitsField;
+            }
+            set {
+                this.withinTownLimitsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool withinTownLimitsSpecified {
+            get {
+                return this.withinTownLimitsFieldSpecified;
+            }
+            set {
+                this.withinTownLimitsFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class StreetAddress {
+        
+        private StreetDetail streetDetailField;
+        
+        private TownDetail townDetailField;
+        
+        private Status statusField;
+        
+        /// <remarks/>
+        public StreetDetail streetDetail {
+            get {
+                return this.streetDetailField;
+            }
+            set {
+                this.streetDetailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TownDetail townDetail {
+            get {
+                return this.townDetailField;
+            }
+            set {
+                this.townDetailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Status status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TransformerEnd))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerEnd))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerEndExt))]
@@ -3240,6 +3268,12 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerSystemResource))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TapChanger))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RatioTapChanger))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConnectivityNodeContainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EquipmentContainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Equipment))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AuxiliaryEquipment))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Sensor))]
@@ -3275,12 +3309,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Conductor))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegment))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegmentExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConnectivityNodeContainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EquipmentContainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnit))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnitExt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeographicalRegion))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConnectivityNode))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseVoltage))]
@@ -3288,13 +3318,14 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Terminal))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(UsagePoint))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Location))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LocationExt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CoordinateSystem))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Asset))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class IdentifiedObject {
         
         private string mRIDField;
@@ -3352,7 +3383,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class IdentifiedObjectNames {
         
         private string referenceTypeField;
@@ -3389,7 +3420,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class TransformerEnd : IdentifiedObject {
         
         private string endNumberField;
@@ -3471,7 +3502,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class TransformerEndBaseVoltage {
         
         private string referenceTypeField;
@@ -3506,7 +3537,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class TransformerEndTerminal {
         
         private string referenceTypeField;
@@ -3542,7 +3573,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PowerTransformerEnd : TransformerEnd {
         
         private Susceptance bField;
@@ -3696,7 +3727,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PowerTransformerEndPowerTransformer {
         
         private string referenceTypeField;
@@ -3731,7 +3762,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PowerTransformerEndExt : PowerTransformerEnd {
         
         private PerCent excitingCurrentZeroField;
@@ -3800,7 +3831,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class SubGeographicalRegion : IdentifiedObject {
         
         private SubGeographicalRegionSubstations[] substationsField;
@@ -3822,7 +3853,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class SubGeographicalRegionSubstations {
         
         private string referenceTypeField;
@@ -3857,126 +3888,96 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PSRType : IdentifiedObject {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TapChanger))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RatioTapChanger))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConnectivityNodeContainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EquipmentContainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Equipment))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AuxiliaryEquipment))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Sensor))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrentTransformer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrentTransformerExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FaultIndicator))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FaultIndicatorExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ConductingEquipment))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Switch))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProtectedSwitch))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LoadBreakSwitch))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Breaker))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GroundDisconnector))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Fuse))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Disconnector))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SeriesCompensator))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegulatingCondEq))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ShuntCompensator))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(NonlinearShuntCompensator))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearShuntCompensator))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RotatingMachine))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SynchronousMachine))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AsynchronousMachine))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ExternalNetworkInjection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Ground))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EnergyConsumer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EarthFaultCompensator))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PetersenCoil))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GroundingImpedance))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Connector))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusbarSection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Conductor))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegment))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegmentExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnit))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnitExt))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class GeographicalRegion : IdentifiedObject {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class ConnectivityNode : IdentifiedObject {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class BaseVoltage : IdentifiedObject {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public abstract partial class PowerSystemResource : IdentifiedObject {
         
-        private Voltage nominalVoltageField;
+        private PowerSystemResourcePSRType pSRTypeField;
+        
+        private PowerSystemResourceLocation locationField;
+        
+        private PowerSystemResourceAssets assetsField;
         
         /// <remarks/>
-        public Voltage nominalVoltage {
+        public PowerSystemResourcePSRType PSRType {
             get {
-                return this.nominalVoltageField;
+                return this.pSRTypeField;
             }
             set {
-                this.nominalVoltageField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Terminal))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public abstract partial class ACDCTerminal : IdentifiedObject {
-        
-        private string sequenceNumberField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string sequenceNumber {
-            get {
-                return this.sequenceNumberField;
-            }
-            set {
-                this.sequenceNumberField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Terminal : ACDCTerminal {
-        
-        private PhaseCode phasesField;
-        
-        private bool phasesFieldSpecified;
-        
-        private TerminalConductingEquipment conductingEquipmentField;
-        
-        private TerminalConnectivityNode connectivityNodeField;
-        
-        /// <remarks/>
-        public PhaseCode phases {
-            get {
-                return this.phasesField;
-            }
-            set {
-                this.phasesField = value;
+                this.pSRTypeField = value;
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool phasesSpecified {
+        public PowerSystemResourceLocation Location {
             get {
-                return this.phasesFieldSpecified;
+                return this.locationField;
             }
             set {
-                this.phasesFieldSpecified = value;
+                this.locationField = value;
             }
         }
         
         /// <remarks/>
-        public TerminalConductingEquipment ConductingEquipment {
+        public PowerSystemResourceAssets Assets {
             get {
-                return this.conductingEquipmentField;
+                return this.assetsField;
             }
             set {
-                this.conductingEquipmentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TerminalConnectivityNode ConnectivityNode {
-            get {
-                return this.connectivityNodeField;
-            }
-            set {
-                this.connectivityNodeField = value;
+                this.assetsField = value;
             }
         }
     }
@@ -3984,80 +3985,10 @@ namespace DAX.CIM.NetSamScada.Equipment {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public enum PhaseCode {
-        
-        /// <remarks/>
-        A,
-        
-        /// <remarks/>
-        AB,
-        
-        /// <remarks/>
-        ABC,
-        
-        /// <remarks/>
-        ABCN,
-        
-        /// <remarks/>
-        ABN,
-        
-        /// <remarks/>
-        AC,
-        
-        /// <remarks/>
-        ACN,
-        
-        /// <remarks/>
-        AN,
-        
-        /// <remarks/>
-        B,
-        
-        /// <remarks/>
-        BC,
-        
-        /// <remarks/>
-        BCN,
-        
-        /// <remarks/>
-        BN,
-        
-        /// <remarks/>
-        C,
-        
-        /// <remarks/>
-        CN,
-        
-        /// <remarks/>
-        N,
-        
-        /// <remarks/>
-        s1,
-        
-        /// <remarks/>
-        s12,
-        
-        /// <remarks/>
-        s12N,
-        
-        /// <remarks/>
-        s1N,
-        
-        /// <remarks/>
-        s2,
-        
-        /// <remarks/>
-        s2N,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class TerminalConductingEquipment {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class PowerSystemResourcePSRType {
         
         private string referenceTypeField;
         
@@ -4091,328 +4022,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class TerminalConnectivityNode {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class UsagePoint : IdentifiedObject {
-        
-        private UsagePointEquipments equipmentsField;
-        
-        /// <remarks/>
-        public UsagePointEquipments Equipments {
-            get {
-                return this.equipmentsField;
-            }
-            set {
-                this.equipmentsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class UsagePointEquipments {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Location : IdentifiedObject {
-        
-        private string directionField;
-        
-        private StreetAddress mainAddressField;
-        
-        private TelephoneNumber phone1Field;
-        
-        private TelephoneNumber phone2Field;
-        
-        private LocationCoordinateSystem coordinateSystemField;
-        
-        /// <remarks/>
-        public string direction {
-            get {
-                return this.directionField;
-            }
-            set {
-                this.directionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public StreetAddress mainAddress {
-            get {
-                return this.mainAddressField;
-            }
-            set {
-                this.mainAddressField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TelephoneNumber phone1 {
-            get {
-                return this.phone1Field;
-            }
-            set {
-                this.phone1Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TelephoneNumber phone2 {
-            get {
-                return this.phone2Field;
-            }
-            set {
-                this.phone2Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LocationCoordinateSystem CoordinateSystem {
-            get {
-                return this.coordinateSystemField;
-            }
-            set {
-                this.coordinateSystemField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class LocationCoordinateSystem {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class CoordinateSystem : IdentifiedObject {
-        
-        private string crsUrnField;
-        
-        /// <remarks/>
-        public string crsUrn {
-            get {
-                return this.crsUrnField;
-            }
-            set {
-                this.crsUrnField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Asset : IdentifiedObject {
-        
-        private string lotNumberField;
-        
-        private string serialNumberField;
-        
-        private string typeField;
-        
-        private LifecycleDate lifecycleField;
-        
-        private AssetOrganisationRoles[] organisationRolesField;
-        
-        /// <remarks/>
-        public string lotNumber {
-            get {
-                return this.lotNumberField;
-            }
-            set {
-                this.lotNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string serialNumber {
-            get {
-                return this.serialNumberField;
-            }
-            set {
-                this.serialNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LifecycleDate lifecycle {
-            get {
-                return this.lifecycleField;
-            }
-            set {
-                this.lifecycleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("OrganisationRoles")]
-        public AssetOrganisationRoles[] OrganisationRoles {
-            get {
-                return this.organisationRolesField;
-            }
-            set {
-                this.organisationRolesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class AssetOrganisationRoles {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PowerSystemResourceLocation {
         
         private string referenceTypeField;
@@ -4447,7 +4057,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PowerSystemResourceAssets {
         
         private string referenceTypeField;
@@ -4483,7 +4093,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class TapChanger : PowerSystemResource {
         
         private string highStepField;
@@ -4568,7 +4178,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class RatioTapChanger : TapChanger {
         
         private PerCent stepVoltageIncrementField;
@@ -4601,7 +4211,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class RatioTapChangerTransformerEnd {
         
         private string referenceTypeField;
@@ -4627,6 +4237,296 @@ namespace DAX.CIM.NetSamScada.Equipment {
             }
             set {
                 this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EquipmentContainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ConnectivityNodeContainer : PowerSystemResource {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public abstract partial class EquipmentContainer : ConnectivityNodeContainer {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class VoltageLevel : EquipmentContainer {
+        
+        private Voltage highVoltageLimitField;
+        
+        private Voltage lowVoltageLimitField;
+        
+        private VoltageLevelBaseVoltage baseVoltageField;
+        
+        private VoltageLevelEquipmentContainer equipmentContainer1Field;
+        
+        /// <remarks/>
+        public Voltage highVoltageLimit {
+            get {
+                return this.highVoltageLimitField;
+            }
+            set {
+                this.highVoltageLimitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Voltage lowVoltageLimit {
+            get {
+                return this.lowVoltageLimitField;
+            }
+            set {
+                this.lowVoltageLimitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public VoltageLevelBaseVoltage BaseVoltage {
+            get {
+                return this.baseVoltageField;
+            }
+            set {
+                this.baseVoltageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("EquipmentContainer")]
+        public VoltageLevelEquipmentContainer EquipmentContainer1 {
+            get {
+                return this.equipmentContainer1Field;
+            }
+            set {
+                this.equipmentContainer1Field = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class VoltageLevelBaseVoltage {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class VoltageLevelEquipmentContainer {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Substation : EquipmentContainer {
+        
+        private SubstationRegion regionField;
+        
+        /// <remarks/>
+        public SubstationRegion Region {
+            get {
+                return this.regionField;
+            }
+            set {
+                this.regionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class SubstationRegion {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Bay : EquipmentContainer {
+        
+        private BayVoltageLevel voltageLevelField;
+        
+        /// <remarks/>
+        public BayVoltageLevel VoltageLevel {
+            get {
+                return this.voltageLevelField;
+            }
+            set {
+                this.voltageLevelField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class BayVoltageLevel {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class BayExt : Bay {
+        
+        private string orderField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
+        public string order {
+            get {
+                return this.orderField;
+            }
+            set {
+                this.orderField = value;
             }
         }
     }
@@ -4666,11 +4566,13 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Conductor))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegment))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ACLineSegmentExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnit))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnitExt))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class Equipment : PowerSystemResource {
         
         private bool aggregateField;
@@ -4716,7 +4618,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class EquipmentEquipmentContainer {
         
         private string referenceTypeField;
@@ -4756,7 +4658,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class AuxiliaryEquipment : Equipment {
         
         private AuxiliaryEquipmentTerminal terminalField;
@@ -4777,7 +4679,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class AuxiliaryEquipmentTerminal {
         
         private string referenceTypeField;
@@ -4814,7 +4716,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class Sensor : AuxiliaryEquipment {
     }
     
@@ -4824,7 +4726,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class CurrentTransformer : Sensor {
     }
     
@@ -4833,7 +4735,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class CurrentTransformerExt : CurrentTransformer {
         
         private CurrentFlow maximumCurrentField;
@@ -4855,7 +4757,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class FaultIndicator : AuxiliaryEquipment {
     }
     
@@ -4864,7 +4766,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class FaultIndicatorExt : FaultIndicator {
         
         private FaultIndicatorResetKind resetKindField;
@@ -4896,7 +4798,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public enum FaultIndicatorResetKind {
         
         /// <remarks/>
@@ -4944,7 +4846,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class ConductingEquipment : Equipment {
         
         private ConductingEquipmentBaseVoltage baseVoltageField;
@@ -4965,7 +4867,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class ConductingEquipmentBaseVoltage {
         
         private string referenceTypeField;
@@ -5006,7 +4908,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class Switch : ConductingEquipment {
         
         private bool normalOpenField;
@@ -5041,7 +4943,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class ProtectedSwitch : Switch {
     }
     
@@ -5050,7 +4952,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class LoadBreakSwitch : ProtectedSwitch {
     }
     
@@ -5059,7 +4961,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class Breaker : ProtectedSwitch {
         
         private CurrentFlow breakingCapacityField;
@@ -5080,7 +4982,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class GroundDisconnector : Switch {
     }
     
@@ -5089,7 +4991,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class Fuse : Switch {
     }
     
@@ -5098,7 +5000,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class Disconnector : Switch {
     }
     
@@ -5107,7 +5009,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class SeriesCompensator : ConductingEquipment {
         
         private Resistance rField;
@@ -5171,7 +5073,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class RegulatingCondEq : ConductingEquipment {
     }
     
@@ -5182,7 +5084,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class ShuntCompensator : RegulatingCondEq {
         
         private Seconds aVRDelayField;
@@ -5316,7 +5218,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class NonlinearShuntCompensator : ShuntCompensator {
     }
     
@@ -5325,7 +5227,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class LinearShuntCompensator : ShuntCompensator {
         
         private Susceptance b0PerSectionField;
@@ -5384,7 +5286,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class RotatingMachine : RegulatingCondEq {
         
         private float ratedPowerFactorField;
@@ -5442,7 +5344,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class SynchronousMachine : RotatingMachine {
         
         private CurrentFlow ikkField;
@@ -5472,6 +5374,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
         private bool shortCircuitRotorTypeFieldSpecified;
         
         private SynchronousMachineKind typeField;
+        
+        private bool typeFieldSpecified;
         
         private PerCent voltageRegulationRangeField;
         
@@ -5625,6 +5529,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool typeSpecified {
+            get {
+                return this.typeFieldSpecified;
+            }
+            set {
+                this.typeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
         public PerCent voltageRegulationRange {
             get {
                 return this.voltageRegulationRangeField;
@@ -5668,7 +5583,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public enum ShortCircuitRotorKind {
         
         /// <remarks/>
@@ -5687,7 +5602,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public enum SynchronousMachineKind {
         
         /// <remarks/>
@@ -5717,7 +5632,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class SynchronousMachineInitialReactiveCapabilityCurve {
         
         private string referenceTypeField;
@@ -5752,14 +5667,18 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class AsynchronousMachine : RotatingMachine {
         
         private bool converterFedDriveField;
         
+        private bool converterFedDriveFieldSpecified;
+        
         private PerCent efficiencyField;
         
         private float iaIrRatioField;
+        
+        private bool iaIrRatioFieldSpecified;
         
         private Frequency nominalFrequencyField;
         
@@ -5770,6 +5689,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
         private ActivePower ratedMechanicalPowerField;
         
         private bool reversibleField;
+        
+        private bool reversibleFieldSpecified;
         
         private float rxLockedRotorRatioField;
         
@@ -5782,6 +5703,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
             }
             set {
                 this.converterFedDriveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool converterFedDriveSpecified {
+            get {
+                return this.converterFedDriveFieldSpecified;
+            }
+            set {
+                this.converterFedDriveFieldSpecified = value;
             }
         }
         
@@ -5802,6 +5734,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
             }
             set {
                 this.iaIrRatioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool iaIrRatioSpecified {
+            get {
+                return this.iaIrRatioFieldSpecified;
+            }
+            set {
+                this.iaIrRatioFieldSpecified = value;
             }
         }
         
@@ -5857,6 +5800,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool reversibleSpecified {
+            get {
+                return this.reversibleFieldSpecified;
+            }
+            set {
+                this.reversibleFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
         public float rxLockedRotorRatio {
             get {
                 return this.rxLockedRotorRatioField;
@@ -5883,7 +5837,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class ExternalNetworkInjection : RegulatingCondEq {
         
         private ActivePowerPerFrequency governorSCDField;
@@ -5900,9 +5854,15 @@ namespace DAX.CIM.NetSamScada.Equipment {
         
         private float maxR0ToX0RatioField;
         
+        private bool maxR0ToX0RatioFieldSpecified;
+        
         private float maxR1ToX1RatioField;
         
+        private bool maxR1ToX1RatioFieldSpecified;
+        
         private float maxZ0ToZ1RatioField;
+        
+        private bool maxZ0ToZ1RatioFieldSpecified;
         
         private CurrentFlow minInitialSymShCCurrentField;
         
@@ -5912,9 +5872,15 @@ namespace DAX.CIM.NetSamScada.Equipment {
         
         private float minR0ToX0RatioField;
         
+        private bool minR0ToX0RatioFieldSpecified;
+        
         private float minR1ToX1RatioField;
         
+        private bool minR1ToX1RatioFieldSpecified;
+        
         private float minZ0ToZ1RatioField;
+        
+        private bool minZ0ToZ1RatioFieldSpecified;
         
         private PU voltageFactorField;
         
@@ -5990,6 +5956,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool maxR0ToX0RatioSpecified {
+            get {
+                return this.maxR0ToX0RatioFieldSpecified;
+            }
+            set {
+                this.maxR0ToX0RatioFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
         public float maxR1ToX1Ratio {
             get {
                 return this.maxR1ToX1RatioField;
@@ -6000,12 +5977,34 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool maxR1ToX1RatioSpecified {
+            get {
+                return this.maxR1ToX1RatioFieldSpecified;
+            }
+            set {
+                this.maxR1ToX1RatioFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
         public float maxZ0ToZ1Ratio {
             get {
                 return this.maxZ0ToZ1RatioField;
             }
             set {
                 this.maxZ0ToZ1RatioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool maxZ0ToZ1RatioSpecified {
+            get {
+                return this.maxZ0ToZ1RatioFieldSpecified;
+            }
+            set {
+                this.maxZ0ToZ1RatioFieldSpecified = value;
             }
         }
         
@@ -6050,6 +6049,17 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool minR0ToX0RatioSpecified {
+            get {
+                return this.minR0ToX0RatioFieldSpecified;
+            }
+            set {
+                this.minR0ToX0RatioFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
         public float minR1ToX1Ratio {
             get {
                 return this.minR1ToX1RatioField;
@@ -6060,12 +6070,34 @@ namespace DAX.CIM.NetSamScada.Equipment {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool minR1ToX1RatioSpecified {
+            get {
+                return this.minR1ToX1RatioFieldSpecified;
+            }
+            set {
+                this.minR1ToX1RatioFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
         public float minZ0ToZ1Ratio {
             get {
                 return this.minZ0ToZ1RatioField;
             }
             set {
                 this.minZ0ToZ1RatioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool minZ0ToZ1RatioSpecified {
+            get {
+                return this.minZ0ToZ1RatioFieldSpecified;
+            }
+            set {
+                this.minZ0ToZ1RatioFieldSpecified = value;
             }
         }
         
@@ -6085,7 +6117,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PowerTransformer : ConductingEquipment {
     }
     
@@ -6094,7 +6126,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class Ground : ConductingEquipment {
     }
     
@@ -6103,8 +6135,21 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class EnergyConsumer : ConductingEquipment {
+        
+        private string customerCountField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
+        public string customerCount {
+            get {
+                return this.customerCountField;
+            }
+            set {
+                this.customerCountField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -6114,7 +6159,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class EarthFaultCompensator : ConductingEquipment {
         
         private Resistance rField;
@@ -6135,7 +6180,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class PetersenCoil : EarthFaultCompensator {
         
         private PetersenCoilModeKind modeField;
@@ -6226,7 +6271,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public enum PetersenCoilModeKind {
         
         /// <remarks/>
@@ -6244,7 +6289,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class GroundingImpedance : EarthFaultCompensator {
         
         private Reactance xField;
@@ -6266,7 +6311,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class Connector : ConductingEquipment {
     }
     
@@ -6275,7 +6320,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class BusbarSection : Connector {
         
         private CurrentFlow ipMaxField;
@@ -6298,7 +6343,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public abstract partial class Conductor : ConductingEquipment {
         
         private Length lengthField;
@@ -6320,7 +6365,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class ACLineSegment : Conductor {
         
         private Susceptance b0chField;
@@ -6425,7 +6470,7 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
     public partial class ACLineSegmentExt : ACLineSegment {
         
         private string aliasNameField;
@@ -6478,16 +6523,13 @@ namespace DAX.CIM.NetSamScada.Equipment {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VoltageLevel))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Substation))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bay))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeneratingUnitExt))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public abstract partial class EquipmentContainer : ConnectivityNodeContainer {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class GeneratingUnit : Equipment {
     }
     
     /// <remarks/>
@@ -6495,55 +6537,30 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class VoltageLevel : EquipmentContainer {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class GeneratingUnitExt : GeneratingUnit {
         
-        private Voltage highVoltageLimitField;
+        private GeneratingUnitKind typeField;
         
-        private Voltage lowVoltageLimitField;
-        
-        private VoltageLevelBaseVoltage baseVoltageField;
-        
-        private VoltageLevelEquipmentContainer equipmentContainer1Field;
+        private GeneratingUnitExtEnergyConsumer energyConsumerField;
         
         /// <remarks/>
-        public Voltage highVoltageLimit {
+        public GeneratingUnitKind type {
             get {
-                return this.highVoltageLimitField;
+                return this.typeField;
             }
             set {
-                this.highVoltageLimitField = value;
+                this.typeField = value;
             }
         }
         
         /// <remarks/>
-        public Voltage lowVoltageLimit {
+        public GeneratingUnitExtEnergyConsumer EnergyConsumer {
             get {
-                return this.lowVoltageLimitField;
+                return this.energyConsumerField;
             }
             set {
-                this.lowVoltageLimitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public VoltageLevelBaseVoltage BaseVoltage {
-            get {
-                return this.baseVoltageField;
-            }
-            set {
-                this.baseVoltageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("EquipmentContainer")]
-        public VoltageLevelEquipmentContainer EquipmentContainer1 {
-            get {
-                return this.equipmentContainer1Field;
-            }
-            set {
-                this.equipmentContainer1Field = value;
+                this.energyConsumerField = value;
             }
         }
     }
@@ -6551,10 +6568,35 @@ namespace DAX.CIM.NetSamScada.Equipment {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public enum GeneratingUnitKind {
+        
+        /// <remarks/>
+        Bio,
+        
+        /// <remarks/>
+        CHP,
+        
+        /// <remarks/>
+        Misc,
+        
+        /// <remarks/>
+        Solar,
+        
+        /// <remarks/>
+        Water,
+        
+        /// <remarks/>
+        Wind,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class VoltageLevelBaseVoltage {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class GeneratingUnitExtEnergyConsumer {
         
         private string referenceTypeField;
         
@@ -6588,34 +6630,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class VoltageLevelEquipmentContainer {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class GeographicalRegion : IdentifiedObject {
     }
     
     /// <remarks/>
@@ -6623,20 +6639,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Substation : EquipmentContainer {
-        
-        private SubstationRegion regionField;
-        
-        /// <remarks/>
-        public SubstationRegion Region {
-            get {
-                return this.regionField;
-            }
-            set {
-                this.regionField = value;
-            }
-        }
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class ConnectivityNode : IdentifiedObject {
     }
     
     /// <remarks/>
@@ -6644,111 +6648,477 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class SubstationRegion {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class BaseVoltage : IdentifiedObject {
         
-        private string referenceTypeField;
-        
-        private string refField;
+        private Voltage nominalVoltageField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
+        public Voltage nominalVoltage {
             get {
-                return this.referenceTypeField;
+                return this.nominalVoltageField;
             }
             set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
+                this.nominalVoltageField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BayExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Terminal))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class Bay : EquipmentContainer {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public abstract partial class ACDCTerminal : IdentifiedObject {
         
-        private BayVoltageLevel voltageLevelField;
-        
-        /// <remarks/>
-        public BayVoltageLevel VoltageLevel {
-            get {
-                return this.voltageLevelField;
-            }
-            set {
-                this.voltageLevelField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class BayVoltageLevel {
-        
-        private string referenceTypeField;
-        
-        private string refField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string referenceType {
-            get {
-                return this.referenceTypeField;
-            }
-            set {
-                this.referenceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @ref {
-            get {
-                return this.refField;
-            }
-            set {
-                this.refField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_2")]
-    public partial class BayExt : Bay {
-        
-        private string orderField;
+        private string sequenceNumberField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string order {
+        public string sequenceNumber {
             get {
-                return this.orderField;
+                return this.sequenceNumberField;
             }
             set {
-                this.orderField = value;
+                this.sequenceNumberField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Terminal : ACDCTerminal {
+        
+        private PhaseCode phasesField;
+        
+        private bool phasesFieldSpecified;
+        
+        private TerminalConductingEquipment conductingEquipmentField;
+        
+        private TerminalConnectivityNode connectivityNodeField;
+        
+        /// <remarks/>
+        public PhaseCode phases {
+            get {
+                return this.phasesField;
+            }
+            set {
+                this.phasesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool phasesSpecified {
+            get {
+                return this.phasesFieldSpecified;
+            }
+            set {
+                this.phasesFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TerminalConductingEquipment ConductingEquipment {
+            get {
+                return this.conductingEquipmentField;
+            }
+            set {
+                this.conductingEquipmentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TerminalConnectivityNode ConnectivityNode {
+            get {
+                return this.connectivityNodeField;
+            }
+            set {
+                this.connectivityNodeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public enum PhaseCode {
+        
+        /// <remarks/>
+        A,
+        
+        /// <remarks/>
+        AB,
+        
+        /// <remarks/>
+        ABC,
+        
+        /// <remarks/>
+        ABCN,
+        
+        /// <remarks/>
+        ABN,
+        
+        /// <remarks/>
+        AC,
+        
+        /// <remarks/>
+        ACN,
+        
+        /// <remarks/>
+        AN,
+        
+        /// <remarks/>
+        B,
+        
+        /// <remarks/>
+        BC,
+        
+        /// <remarks/>
+        BCN,
+        
+        /// <remarks/>
+        BN,
+        
+        /// <remarks/>
+        C,
+        
+        /// <remarks/>
+        CN,
+        
+        /// <remarks/>
+        N,
+        
+        /// <remarks/>
+        s1,
+        
+        /// <remarks/>
+        s12,
+        
+        /// <remarks/>
+        s12N,
+        
+        /// <remarks/>
+        s1N,
+        
+        /// <remarks/>
+        s2,
+        
+        /// <remarks/>
+        s2N,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class TerminalConductingEquipment {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class TerminalConnectivityNode {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class UsagePoint : IdentifiedObject {
+        
+        private UsagePointEquipments equipmentsField;
+        
+        /// <remarks/>
+        public UsagePointEquipments Equipments {
+            get {
+                return this.equipmentsField;
+            }
+            set {
+                this.equipmentsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class UsagePointEquipments {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LocationExt))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class Location : IdentifiedObject {
+        
+        private string directionField;
+        
+        private StreetAddress mainAddressField;
+        
+        private TelephoneNumber phone1Field;
+        
+        private TelephoneNumber phone2Field;
+        
+        private LocationCoordinateSystem coordinateSystemField;
+        
+        /// <remarks/>
+        public string direction {
+            get {
+                return this.directionField;
+            }
+            set {
+                this.directionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public StreetAddress mainAddress {
+            get {
+                return this.mainAddressField;
+            }
+            set {
+                this.mainAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TelephoneNumber phone1 {
+            get {
+                return this.phone1Field;
+            }
+            set {
+                this.phone1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TelephoneNumber phone2 {
+            get {
+                return this.phone2Field;
+            }
+            set {
+                this.phone2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LocationCoordinateSystem CoordinateSystem {
+            get {
+                return this.coordinateSystemField;
+            }
+            set {
+                this.coordinateSystemField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class LocationCoordinateSystem {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class LocationExt : Location {
+        
+        private PositionPoints positionPointsField;
+        
+        /// <remarks/>
+        public PositionPoints positionPoints {
+            get {
+                return this.positionPointsField;
+            }
+            set {
+                this.positionPointsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class CoordinateSystem : IdentifiedObject {
+        
+        private string crsUrnField;
+        
+        /// <remarks/>
+        public string crsUrn {
+            get {
+                return this.crsUrnField;
+            }
+            set {
+                this.crsUrnField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
+    public partial class AssetOrganisationRoles {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
             }
         }
     }

@@ -52,12 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NetSamDeltaProfile_NetSamEquipmentProfile.cs" />
     <Compile Include="NetSamEquipmentProfile.cs" />
     <Compile Include="NetSamMeasurementProfile.cs" />
     <Compile Include="NetSamMeterReadingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="NetSamDeltaProfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="NetSamEquipmentProfile.xsd">
       <SubType>Designer</SubType>
     </None>

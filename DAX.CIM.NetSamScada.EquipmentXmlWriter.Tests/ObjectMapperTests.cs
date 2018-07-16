@@ -107,7 +107,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         [TestMethod]
         public void CompleteNrgiTest()
         {
-            bool run = false;
+            bool run = true;
 
             if (run)
             {
@@ -138,6 +138,45 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
 
                 XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
                 System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\complete_net.xml");
+                xmlSerializer.Serialize(file, xmlProfile);
+                file.Close();
+            }
+        }
+
+        [TestMethod]
+        public void CompleteNrgiDeltaInitialDataSetTest()
+        {
+            bool run = true;
+
+            if (run)
+            {
+                var reader = new CimJsonFileReader(@"c:\temp\cim\delta\00_initial 31-05-2018.jsonl");
+                var cimObjects = reader.Read().ToList();
+
+                Assert.IsTrue(CimObjUniquenessChecker.IsUnique(cimObjects));
+
+                var converter = new NetSamEquipmentXMLConverter(cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
+
+                var result = converter.GetCimObjects().ToList();
+                Assert.IsTrue(CimObjUniquenessChecker.IsUnique(result));
+
+                var xmlProfile = converter.GetXMLData(result);
+
+                var disTest = cimObjects.Find(o => o.mRID == "b23c83e3-dc01-4748-acde-c19c80b934e2") as Disconnector;
+
+                var disBayTest = result.Find(o => o.mRID == disTest.EquipmentContainer.@ref);
+
+                // Check at DisconnectedLinkProcessor disconnectors er kommet med ud i xml
+                Assert.IsTrue(xmlProfile.Disconnector.ToList().Exists(o => o.description == "Auto generated DL"));
+
+                // Check at DisconnectedLinkProcessor bays er kommet med ud i xml
+                Assert.IsTrue(xmlProfile.BayExt.ToList().Exists(o => o.description == "Auto generated DL Bay"));
+
+                // Check at AddMissingBayProcessor bays er kommet med ud i xml
+                Assert.IsTrue(xmlProfile.BayExt.ToList().Exists(o => o.mRID == disTest.EquipmentContainer.@ref));
+
+                XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
+                System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\delta\00_initial 31-05-2018.xml");
                 xmlSerializer.Serialize(file, xmlProfile);
                 file.Close();
             }

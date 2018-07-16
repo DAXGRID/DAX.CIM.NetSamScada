@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NetSamDeltaProfile"
+    targetNamespace="http://net-sam.dk/NetSamDeltaProfile_0_1.xsd"
+    elementFormDefault="unqualified"
+    xmlns:delta="http://net-sam.dk/NetSamDeltaProfile_0_1.xsd"
+    xmlns:mstns="http://net-sam.dk/NetSamDeltaProfile_0_1.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cim="http://net-sam.dk/EquipmentProfile_1_4"
+>
+  <xs:import namespace="http://net-sam.dk/EquipmentProfile_1_4" schemaLocation="NetSamEquipmentProfile.xsd"/>
+
+  <xs:element name="ChangeSet" type="delta:ChangeSet" />
+  <xs:complexType name="ChangeSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectCreation" type="delta:ObjectCreation" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectModification" type="delta:ObjectModification" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectDeletion" type="delta:ObjectDeletion" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectCreation">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="delta:DataSetMember">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Object" type="cim:IdentifiedObject" >
+            <xs:annotation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectModification">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="delta:DataSetMember">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ForwardChange" type="delta:ObjectForwardModification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ReverseChange" type="delta:ObjectReverseModification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectForwardModification">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+      </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="delta:PropertyModification" >
+            <xs:annotation>
+              <xs:documentation>Change to a property of an identified object</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectReverseModification">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="delta:ObjectForwardModification">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectDeletion">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="delta:DataSetMember">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PropertyModification">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+       <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:anyType"/>
+       <xs:element minOccurs="0" maxOccurs="1" name="Ref" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="Name"  type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="DataSetMember" abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="referenceType"  type="xs:string"/>
+    <xs:attribute name="ref"  type="xs:string"/>
+  </xs:complexType>
+
+</xs:schema>
+

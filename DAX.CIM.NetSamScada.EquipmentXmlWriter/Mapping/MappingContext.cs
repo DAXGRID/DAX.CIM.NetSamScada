@@ -92,7 +92,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
         public Equipment.PositionPoint AddPositionPoint(string locationMrid, int seqNo, double x, double y)
         {
             var pp = new Equipment.PositionPoint();
-            pp.Location = new Equipment.PositionPointLocation() { @ref = locationMrid };
+            if (locationMrid != null)
+                pp.Location = new Equipment.PositionPointLocation() { @ref = locationMrid };
             pp.sequenceNumber = seqNo.ToString();
             pp.xPosition = Convert.ToString(x, System.Globalization.CultureInfo.InvariantCulture);
             pp.yPosition = Convert.ToString(y, System.Globalization.CultureInfo.InvariantCulture);
