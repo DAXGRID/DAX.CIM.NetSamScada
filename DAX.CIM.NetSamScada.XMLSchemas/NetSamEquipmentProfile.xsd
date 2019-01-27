@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:cim="http://net-sam.dk/EquipmentProfile_1_2" xmlns:cimp="http://www.iec.ch/cimprofile" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://net-sam.dk/EquipmentProfile_1_2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:cim="http://net-sam.dk/EquipmentProfile_1_3" xmlns:cimp="http://www.iec.ch/cimprofile" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://net-sam.dk/EquipmentProfile_1_3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="ProfileEnvelop" type="cim:ProfileEnvelop" />
   <xs:complexType name="ProfileEnvelop">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConnectivityNodeContainer" type="cim:ConnectivityNodeContainer" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Asset" type="cim:Asset" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetOwner" type="cim:AssetOwner" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Maintainer" type="cim:Maintainer" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CoordinateSystem" type="cim:CoordinateSystem" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Location" type="cim:Location" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PositionPoint" type="cim:PositionPoint" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GeneratingUnit" type="cim:GeneratingUnit" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GeneratingUnitExt" type="cim:GeneratingUnitExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="UsagePoint" type="cim:UsagePoint" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BaseVoltage" type="cim:BaseVoltage" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Bay" type="cim:Bay" />
@@ -28,6 +29,7 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BayExt" type="cim:BayExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Breaker" type="cim:Breaker" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BusbarSection" type="cim:BusbarSection" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConnectivityNodeContainer" type="cim:ConnectivityNodeContainer" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CurrentTransformer" type="cim:CurrentTransformer" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CurrentTransformerExt" type="cim:CurrentTransformerExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Disconnector" type="cim:Disconnector" />
@@ -55,16 +57,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SynchronousMachine" type="cim:SynchronousMachine" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="TapSchedule" type="cim:TapSchedule" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ConnectivityNodeContainer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Core#ConnectivityNodeContainer">
-    <xs:annotation>
-      <xs:documentation>A base class for all objects that may contain connectivity nodes or topological nodes.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="cim:PowerSystemResource">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="Version" abstract="true" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/Net-Sam-SCADA/Net-Sam-SCADA ExchangeProfiles/EquipmentProfile#Version">
     <xs:annotation>
@@ -484,7 +476,7 @@ The place, scene, or point of something where someone or something has been, is,
               <xs:documentation>Additional phone number.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="CoordinateSystem" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61968/Common#Location.CoordinateSystem">
+          <xs:element minOccurs="0" maxOccurs="1" name="CoordinateSystem" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61968/Common#Location.CoordinateSystem">
             <xs:annotation>
               <xs:documentation>Coordinate system used to describe position points of this location.</xs:documentation>
             </xs:annotation>
@@ -531,6 +523,56 @@ Set of spatial coordinates that determine a point, defined in the coordinate sys
         </xs:complexType>
       </xs:element>
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeneratingUnit" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Generation/Production#GeneratingUnit">
+    <xs:annotation>
+      <xs:documentation>A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="cim:Equipment">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GeneratingUnitKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#/TC57CIM/IEC61970/Base/Wires#TransformerControlMode">
+    <xs:annotation>
+      <xs:documentation>Control modes for a transformer.</xs:documentation>
+      <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bio">
+      </xs:enumeration>
+      <xs:enumeration value="CHP">
+      </xs:enumeration>
+      <xs:enumeration value="Misc">
+      </xs:enumeration>
+      <xs:enumeration value="Solar">
+      </xs:enumeration>
+      <xs:enumeration value="Water">
+      </xs:enumeration>
+      <xs:enumeration value="Wind">
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GeneratingUnitExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/Net-Sam-SCADA/Net-Sam-SCADA Extension#GeneratingUnitExt">
+    <xs:annotation>
+      <xs:documentation cimp:category="Stereotype" cimp:notes="PSI">PSI</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="cim:GeneratingUnit">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="cim:GeneratingUnitKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/Net-Sam-SCADA/Net-Sam-SCADA Extension#GeneratingUnitExt.type">
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="EnergyConsumer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/Net-Sam-SCADA/Net-Sam-SCADA Extension#GeneratingUnitExt.EnergyConsumer">
+            <xs:complexType>
+              <xs:attribute name="referenceType" type="xs:string" use="optional" />
+              <xs:attribute name="ref" type="xs:string">
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="UsagePoint" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61968/Metering#UsagePoint">
     <xs:annotation>
@@ -939,7 +981,7 @@ For CIMXML data files in RDF syntax, the mRID is mapped to rdf:ID or rdf:about a
           <xs:documentation>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Core#IdentifiedObject.name">
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Core#IdentifiedObject.name">
         <xs:annotation>
           <xs:documentation>The name is any free human readable and possibly non unique text naming the object.</xs:documentation>
         </xs:annotation>
@@ -1079,7 +1121,7 @@ A collection of equipment for purposes other than generation or utilization, thr
     <xs:complexContent mixed="false">
       <xs:extension base="cim:EquipmentContainer">
         <xs:sequence>
-          <xs:element minOccurs="1" maxOccurs="1" name="Region" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Core#Substation.Region">
+          <xs:element minOccurs="0" maxOccurs="1" name="Region" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Core#Substation.Region">
             <xs:annotation>
               <xs:documentation>The SubGeographicalRegion containing the substation.</xs:documentation>
             </xs:annotation>
@@ -1374,23 +1416,23 @@ The BaseVoltage at the two ends of ACLineSegments in a Line shall have the same 
               <xs:documentation>Positive sequence shunt (charging) conductance, uniformly distributed, of the entire line section.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="r" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.r">
+          <xs:element minOccurs="0" maxOccurs="1" name="r" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.r">
             <xs:annotation>
               <xs:documentation>Positive sequence series resistance of the entire line section.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="r0" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.r0">
+          <xs:element minOccurs="0" maxOccurs="1" name="r0" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.r0">
             <xs:annotation>
               <xs:documentation>Zero sequence series resistance of the entire line section.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="x" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.x">
+          <xs:element minOccurs="0" maxOccurs="1" name="x" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.x">
             <xs:annotation>
               <xs:documentation>Positive sequence series reactance of the entire line section.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="x0" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.x0">
+          <xs:element minOccurs="0" maxOccurs="1" name="x0" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ACLineSegment.x0">
             <xs:annotation>
               <xs:documentation>Zero sequence series reactance of the entire line section.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
@@ -1511,19 +1553,19 @@ The attribute aliasName is retained because of backwards compatibility between C
     <xs:complexContent mixed="false">
       <xs:extension base="cim:RotatingMachine">
         <xs:sequence>
-          <xs:element minOccurs="1" maxOccurs="1" name="converterFedDrive" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.converterFedDrive">
+          <xs:element minOccurs="0" maxOccurs="1" name="converterFedDrive" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.converterFedDrive">
             <xs:annotation>
               <xs:documentation>Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="efficiency" type="cim:PerCent" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.efficiency">
+          <xs:element minOccurs="0" maxOccurs="1" name="efficiency" type="cim:PerCent" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.efficiency">
             <xs:annotation>
               <xs:documentation>Efficiency of the asynchronous machine at nominal operation in percent. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="iaIrRatio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.iaIrRatio">
+          <xs:element minOccurs="0" maxOccurs="1" name="iaIrRatio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.iaIrRatio">
             <xs:annotation>
               <xs:documentation>Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
@@ -1539,19 +1581,19 @@ The attribute aliasName is retained because of backwards compatibility between C
               <xs:documentation>Nameplate data.  Depends on the slip and number of pole pairs.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="polePairNumber" type="xs:integer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.polePairNumber">
+          <xs:element minOccurs="0" maxOccurs="1" name="polePairNumber" type="xs:integer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.polePairNumber">
             <xs:annotation>
               <xs:documentation>Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="ratedMechanicalPower" type="cim:ActivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.ratedMechanicalPower">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedMechanicalPower" type="cim:ActivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.ratedMechanicalPower">
             <xs:annotation>
               <xs:documentation>Rated mechanical power (Pr in the IEC 60909-0). Used for short circuit data exchange according to IEC 60909.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="reversible" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.reversible">
+          <xs:element minOccurs="0" maxOccurs="1" name="reversible" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#AsynchronousMachine.reversible">
             <xs:annotation>
               <xs:documentation>Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
@@ -1675,6 +1717,16 @@ Combination of conducting material with consistent electrical characteristics, b
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ConnectivityNodeContainer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Core#ConnectivityNodeContainer">
+    <xs:annotation>
+      <xs:documentation>A base class for all objects that may contain connectivity nodes or topological nodes.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="cim:PowerSystemResource">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="Connector" abstract="true" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#Connector">
     <xs:annotation>
       <xs:documentation>?
@@ -1749,7 +1801,13 @@ Generic user of energy - a  point of consumption on the power system model.</xs:
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:ConductingEquipment">
-        <xs:sequence />
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="customerCount" type="xs:integer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#EnergyConsumer.customerCount">
+            <xs:annotation>
+              <xs:documentation>Number of individual customers represented by this demand.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1798,7 +1856,7 @@ This class represents external network and it is used for IEC 60909 calculations
     <xs:complexContent mixed="false">
       <xs:extension base="cim:RegulatingCondEq">
         <xs:sequence>
-          <xs:element minOccurs="1" maxOccurs="1" name="governorSCD" type="cim:ActivePowerPerFrequency" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.governorSCD">
+          <xs:element minOccurs="0" maxOccurs="1" name="governorSCD" type="cim:ActivePowerPerFrequency" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.governorSCD">
             <xs:annotation>
               <xs:documentation>Power Frequency Bias. This is the change in power injection divided by the change in frequency and negated.  A positive value of the power frequency bias provides additional power injection upon a drop in frequency.</xs:documentation>
             </xs:annotation>
@@ -1809,69 +1867,69 @@ This class represents external network and it is used for IEC 60909 calculations
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="maxInitialSymShCCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxInitialSymShCCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxInitialSymShCCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxInitialSymShCCurrent">
             <xs:annotation>
               <xs:documentation>  Maximum initial symmetrical short-circuit currents (Ik" max) in A (Ik" = Sk"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="maxP" type="cim:ActivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxP">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxP" type="cim:ActivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxP">
             <xs:annotation>
               <xs:documentation>Maximum active power of the injection.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="maxQ" type="cim:ReactivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxQ">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxQ" type="cim:ReactivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxQ">
             <xs:annotation>
               <xs:documentation>Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used </xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="maxR0ToX0Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxR0ToX0Ratio">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxR0ToX0Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxR0ToX0Ratio">
             <xs:annotation>
               <xs:documentation>Maximum ratio of zero sequence resistance of Network Feeder to its zero sequence reactance (R(0)/X(0) max). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="maxR1ToX1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxR1ToX1Ratio">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxR1ToX1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxR1ToX1Ratio">
             <xs:annotation>
               <xs:documentation>Maximum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) max). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="maxZ0ToZ1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxZ0ToZ1Ratio">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxZ0ToZ1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.maxZ0ToZ1Ratio">
             <xs:annotation>
               <xs:documentation>Maximum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) max). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="minInitialSymShCCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minInitialSymShCCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="minInitialSymShCCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minInitialSymShCCurrent">
             <xs:annotation>
               <xs:documentation>Minimum initial symmetrical short-circuit currents (Ik" min) in A (Ik" = Sk"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="minP" type="cim:ActivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minP">
+          <xs:element minOccurs="0" maxOccurs="1" name="minP" type="cim:ActivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minP">
             <xs:annotation>
               <xs:documentation>Minimum active power of the injection.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="minQ" type="cim:ReactivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minQ">
+          <xs:element minOccurs="0" maxOccurs="1" name="minQ" type="cim:ReactivePower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minQ">
             <xs:annotation>
               <xs:documentation>Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="minR0ToX0Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minR0ToX0Ratio">
+          <xs:element minOccurs="0" maxOccurs="1" name="minR0ToX0Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minR0ToX0Ratio">
             <xs:annotation>
               <xs:documentation>Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik"). Used for short circuit data exchange according to IEC 6090</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="minR1ToX1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minR1ToX1Ratio">
+          <xs:element minOccurs="0" maxOccurs="1" name="minR1ToX1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minR1ToX1Ratio">
             <xs:annotation>
               <xs:documentation>Minimum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) min). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="minZ0ToZ1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minZ0ToZ1Ratio">
+          <xs:element minOccurs="0" maxOccurs="1" name="minZ0ToZ1Ratio" type="xs:float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#ExternalNetworkInjection.minZ0ToZ1Ratio">
             <xs:annotation>
               <xs:documentation>Minimum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) min). Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
@@ -2634,19 +2692,19 @@ Used only for single fed short circuit on a generator (Section 4.3.4.2. in the I
               <xs:documentation>Percent of the coordinated reactive control that comes from this machine.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="r" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.r">
+          <xs:element minOccurs="0" maxOccurs="1" name="r" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.r">
             <xs:annotation>
               <xs:documentation>Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="r0" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.r0">
+          <xs:element minOccurs="0" maxOccurs="1" name="r0" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.r0">
             <xs:annotation>
               <xs:documentation>Zero sequence resistance of the synchronous machine.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="r2" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.r2">
+          <xs:element minOccurs="0" maxOccurs="1" name="r2" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.r2">
             <xs:annotation>
               <xs:documentation>Negative sequence resistance.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
@@ -2668,7 +2726,7 @@ Used only for single fed short circuit on a generator (Section 4.3.4.2. in the I
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="type" type="cim:SynchronousMachineKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.type">
+          <xs:element minOccurs="0" maxOccurs="1" name="type" type="cim:SynchronousMachineKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.type">
             <xs:annotation>
               <xs:documentation>Modes that this synchronous machine can operate in.</xs:documentation>
             </xs:annotation>
@@ -2680,13 +2738,13 @@ This attribute is used to describe the operating voltage of the generating unit.
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="x0" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.x0">
+          <xs:element minOccurs="0" maxOccurs="1" name="x0" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.x0">
             <xs:annotation>
               <xs:documentation>Zero sequence reactance of the synchronous machine.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="x2" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.x2">
+          <xs:element minOccurs="0" maxOccurs="1" name="x2" type="cim:PU" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16/TC57CIM/IEC61970/Base/Wires#SynchronousMachine.x2">
             <xs:annotation>
               <xs:documentation>Negative sequence reactance.</xs:documentation>
               <xs:documentation cimp:category="Stereotype" cimp:notes="ShortCircuit">ShortCircuit</xs:documentation>

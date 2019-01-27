@@ -270,7 +270,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                     else if (neighboorWithVoltageLevel == null && pnmObj is PhysicalNetworkModel.EnergyConsumer)
                         ci.BaseVoltage = 400;
                     else
-                        throw new Exception("ConductingEquipment with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
+                        ci.BaseVoltage = 0;
+                       //throw new Exception("ConductingEquipment with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
                 }                    
 
                 if (ci.BaseVoltage > 0)
