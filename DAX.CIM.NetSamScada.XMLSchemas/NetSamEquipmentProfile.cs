@@ -20,8 +20,8 @@ namespace DAX.CIM.NetSamScada.Equipment {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_4", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://net-sam.dk/EquipmentProfile_1_3", IsNullable=false)]
     public partial class ProfileEnvelop {
         
         private Asset[] assetField;

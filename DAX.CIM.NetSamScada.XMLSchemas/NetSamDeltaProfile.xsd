@@ -54,14 +54,14 @@
     <xs:annotation>
       <xs:documentation>
       </xs:documentation>
-      </xs:annotation>
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="delta:PropertyModification" >
-            <xs:annotation>
-              <xs:documentation>Change to a property of an identified object</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="delta:PropertyModification" >
+        <xs:annotation>
+          <xs:documentation>Change to a property of an identified object</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="ObjectReverseModification">
@@ -92,8 +92,8 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-       <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:anyType"/>
-       <xs:element minOccurs="0" maxOccurs="1" name="Ref" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:anyType"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="Ref" type="xs:string"/>
     </xs:sequence>
     <xs:attribute name="Name"  type="xs:string"/>
   </xs:complexType>
