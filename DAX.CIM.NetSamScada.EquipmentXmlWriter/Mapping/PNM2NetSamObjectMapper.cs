@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAX.CIM.PhysicalNetworkModel.Traversal;
 using DAX.CIM.PhysicalNetworkModel.Traversal.Extensions;
+using DAX.CIM.NetSamScada.Delta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -237,7 +238,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             }
             catch (Exception ex)
             {
-                throw new Exception("Error mapping " + pnmObj.GetType().Name, ex);
+                return null;
+                //throw new Exception("Error mapping " + pnmObj.GetType().Name, ex);
             }
 
 
@@ -326,70 +328,72 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             return netSamObj;
         }
 
-        public Delta.PropertyModification MapProperty(MappingContext mapContext, string propertyName, object valueObject)
+        public PropertyModification MapProperty(MappingContext mapContext, string propertyName, object valueObject)
         {
             if (valueObject == null)
-                return null;
+            {
+                return new PropertyModification() { Name = propertyName };
+            }
 
 
             if (valueObject is PhysicalNetworkModel.TerminalConnectivityNode)
-                return new Delta.PropertyModification() { Name = propertyName, Ref = ((PhysicalNetworkModel.TerminalConnectivityNode)valueObject).@ref };
+                return new PropertyModification() { Name = propertyName, Ref = ((PhysicalNetworkModel.TerminalConnectivityNode)valueObject).@ref };
 
             if (valueObject is Boolean || valueObject is String)
-                return new Delta.PropertyModification() { Name = propertyName, Value = valueObject };
+                return new PropertyModification() { Name = propertyName, Value = valueObject };
 
 
             if (valueObject is PhysicalNetworkModel.Voltage)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Voltage> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Voltage> (valueObject) };
             if (valueObject is PhysicalNetworkModel.ApparentPower)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ApparentPower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ApparentPower> (valueObject) };
             if (valueObject is PhysicalNetworkModel.ActivePower)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ActivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ActivePower> (valueObject) };
             if (valueObject is PhysicalNetworkModel.KiloActivePower)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.KiloActivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.KiloActivePower> (valueObject) };
             if (valueObject is PhysicalNetworkModel.ActivePowerPerFrequency)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ActivePowerPerFrequency> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ActivePowerPerFrequency> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Reactance)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Reactance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Reactance> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Resistance)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Resistance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Resistance> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Capacitance)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Capacitance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Capacitance> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Conductance)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Conductance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Conductance> (valueObject) };
             if (valueObject is PhysicalNetworkModel.CurrentFlow)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.CurrentFlow> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.CurrentFlow> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Frequency)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Frequency> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Frequency> (valueObject) };
             if (valueObject is PhysicalNetworkModel.GroundingImpedance)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.GroundingImpedance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.GroundingImpedance> (valueObject) };
             if (valueObject is PhysicalNetworkModel.KiloActivePower)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.KiloActivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.KiloActivePower> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Length)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Length> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Length> (valueObject) };
             if (valueObject is PhysicalNetworkModel.PerCent)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.PerCent> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.PerCent> (valueObject) };
             if (valueObject is PhysicalNetworkModel.PU)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.PU> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.PU> (valueObject) };
             if (valueObject is PhysicalNetworkModel.ReactivePower)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ReactivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ReactivePower> (valueObject) };
             if (valueObject is PhysicalNetworkModel.RotationSpeed)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.RotationSpeed> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.RotationSpeed> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Seconds)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Seconds> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Seconds> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Status)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Status> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Status> (valueObject) };
             if (valueObject is PhysicalNetworkModel.Susceptance)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Susceptance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Susceptance> (valueObject) };
             if (valueObject is PhysicalNetworkModel.VoltagePerReactivePower)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.VoltagePerReactivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.VoltagePerReactivePower> (valueObject) };
 
             if (valueObject is PhysicalNetworkModel.LifecycleDate)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.LifecycleDate>(valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.LifecycleDate>(valueObject) };
             if (valueObject is PhysicalNetworkModel.StreetAddress)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.StreetAddress> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.StreetAddress> (valueObject) };
             if (valueObject is PhysicalNetworkModel.StreetDetail)
-                return new Delta.PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.StreetDetail> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.StreetDetail> (valueObject) };
     
 
             if (valueObject is PhysicalNetworkModel.Point2D[])
@@ -409,7 +413,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                     seqNo++;
                 }
 
-                return new Delta.PropertyModification()
+                return new PropertyModification()
                 {
                     Name = "positionPoints",
                     Value = new Equipment.PositionPoints() { PositionPoint = xmlPositionPoints.ToArray() }
@@ -417,7 +421,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             }
 
 
-            throw new Exception("Error mapping " + valueObject.GetType().Name);
+            //throw new Exception("Error mapping " + valueObject.GetType().Name);
+            return null;
 
         }
 

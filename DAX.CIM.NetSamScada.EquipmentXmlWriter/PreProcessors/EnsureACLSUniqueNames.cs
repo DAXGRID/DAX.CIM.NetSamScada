@@ -49,7 +49,7 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                         int counter = 1;
                         foreach (var d in r.Duplicates)
                         {
-                            d.name = r.Name + "_" + counter;
+                            d.name = d.mRID;
                             counter++;
                         }
                     }

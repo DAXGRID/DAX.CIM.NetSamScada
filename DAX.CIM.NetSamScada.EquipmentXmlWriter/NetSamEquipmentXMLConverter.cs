@@ -54,7 +54,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
             foreach (var cimObj in afterProcessing)
             {
                 var netSamObj = mapper.MapObject(mapContext, cimObj);
-                mappedObjects.Add(netSamObj);
+                if (netSamObj != null)
+                    mappedObjects.Add(netSamObj);
             }
 
             profile.CoordinateSystem = mappedObjects.OfType<Equipment.CoordinateSystem>().ToArray();

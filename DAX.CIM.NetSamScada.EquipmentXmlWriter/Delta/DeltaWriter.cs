@@ -1,101 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml.Serialization;
-using DAX.CIM.Differ;
+﻿using DAX.CIM.Differ;
 using DAX.CIM.NetSamScada.Delta;
 using DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping;
 using DAX.CIM.NetSamScada.PreProcessors;
 using DAX.Cson;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
+namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Delta
 {
-    [TestClass]
-    public class DeltaTests
+    public class DeltaWriter
     {
-
-        [TestMethod]
-        public void TestMethod1()
-        {
-
-            var deltaFilesPath = @"c:\temp\cim\delta\";
-
-            /*
-            // big files
-            var diffBigFiles = new string[] {
-                deltaFilesPath + "00_initial 31-05-2018.jsonl",
-                deltaFilesPath + "01_LV_ACLineSegmentmoved from trafo to bay 31-05-2018.jsonl",
-                deltaFilesPath + "02_MV_ACLineSegment Change Type 31-05-2018.jsonl",
-            };
-
-            for (int diffStep = 1; diffStep < 3; diffStep++)
-            {
-                CreateDiffXmls(diffBigFiles, diffStep);
-            }
-            */
-
-
-            // small files
-            var diffFiles = new string[] {
-                deltaFilesPath + "00_",
-                deltaFilesPath + "01_",
-                deltaFilesPath + "02_small_area.jsonl",
-                deltaFilesPath + "03_change_LV_switch_status.jsonl",
-                deltaFilesPath + "04_insert_LV_bay_with_fuse_switch.jsonl",
-                deltaFilesPath + "05_insert_new_LV_cable.jsonl",
-                deltaFilesPath + "06_insert_new_LV_cablebox.jsonl",
-                deltaFilesPath + "07_insert_LV_customer_bay_in_cablebox.jsonl",
-                deltaFilesPath + "08_insert_LV_customer_cable_and_installation.jsonl",
-                deltaFilesPath + "09_insert_MV_station_888_split_MV_cable_connect_to_new_station.jsonl",
-                deltaFilesPath + "10_cablebox_changed_product_type_date_attributes.jsonl",
-                deltaFilesPath + "11_delete_kablebox_LV_cable_to_Substation_131.jsonl",
-                deltaFilesPath + "12_delete_customers_cable.jsonl",
-                deltaFilesPath + "13_change_customer.jsonl",
-                deltaFilesPath + "14_delete_substation_delete_MVcable_new_MV_cable.jsonl",
-                deltaFilesPath + "15_change_asset_attributes.jsonl",
-                deltaFilesPath + "16_change_MV_trafo_by_attributes.jsonl",
-                deltaFilesPath + "17_change_MV_trafo_by_delete_and_create.jsonl",
-                deltaFilesPath + "18_change_substation_by_attribute_product_type_ec.jsonl",
-                deltaFilesPath + "19_initial_export_before_HV_changes.jsonl",
-                deltaFilesPath + "20_change_HV_trafo_by_attributes.jsonl",
-                deltaFilesPath + "21_change_HV_trafo_by_delete_and_create.jsonl",
-                deltaFilesPath + "22_change_HV_cable_by_attributes.jsonl",
-                deltaFilesPath + "23_change_HV_cable_by_delete_and_create.jsonl",
-                deltaFilesPath + "24_add_new_HV_bay.jsonl"
-
-
-            };
-
-            for (int diffStep = 21; diffStep < 25; diffStep++)
-            {
-                CreateDiffXmls(diffFiles, diffStep);
-            }
-
-
-
-        }
-
-        private static void CreateDiffXmls(string[] diffFiles, int diffStep)
-        {
-            var diff1 = diffFiles[diffStep - 1];
-            var diff2 = diffFiles[diffStep];
-            var outputFilename = diff2.Replace("jsonl", "xml");
-
-            CreateDektaXML(diff1, diff2, outputFilename);
-        }
-
-        private static void CreateDektaXML(string diff1, string diff2, string outputFilename)
+        public static void WriteDeltaXML(string diff1Jsonl, string diff2Jsonl, string outputFilename)
         {
             var differ = new CimDiffer();
             var serializer = new CsonSerializer();
 
-            var prevFile = serializer.DeserializeObjects(File.OpenRead(diff1)).ToList();
+            var prevFile = serializer.DeserializeObjects(File.OpenRead(diff1Jsonl)).ToList();
             var prevConverter = new NetSamEquipmentXMLConverter(prevFile, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
             var prevResult = prevConverter.GetCimObjects().ToList();
 
-            var nextFile = serializer.DeserializeObjects(File.OpenRead(diff2)).ToList();
+            var nextFile = serializer.DeserializeObjects(File.OpenRead(diff2Jsonl)).ToList();
             var nextConverter = new NetSamEquipmentXMLConverter(nextFile, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
             var nextResult = nextConverter.GetCimObjects().ToList();
 
@@ -195,5 +124,6 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
             xmlSerializer.Serialize(file, env, ns);
             file.Close();
         }
+
     }
 }
