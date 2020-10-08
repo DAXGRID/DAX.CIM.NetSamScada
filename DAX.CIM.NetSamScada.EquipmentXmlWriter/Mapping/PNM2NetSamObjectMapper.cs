@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using DAX.CIM.NetSamScada.Delta.Equipment;
 using DAX.CIM.PhysicalNetworkModel.Traversal;
 using DAX.CIM.PhysicalNetworkModel.Traversal.Extensions;
-using DAX.CIM.NetSamScada.Delta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 // Map conducting equipment
                 cfg.CreateMap<PhysicalNetworkModel.IdentifiedObject, Equipment.IdentifiedObject>()
                 .Include<PhysicalNetworkModel.CoordinateSystem, Equipment.CoordinateSystem>()
-                .Include<PhysicalNetworkModel.Asset, Equipment.Asset>()
+                //.Include<PhysicalNetworkModel.Asset, Equipment.Asset>()
                 .Include<PhysicalNetworkModel.LocationExt, Equipment.LocationExt>()
                 .Include<PhysicalNetworkModel.ConnectivityNode, Equipment.ConnectivityNode>()
                 .Include<PhysicalNetworkModel.Terminal, Equipment.Terminal>()
@@ -39,7 +39,9 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 .Include<PhysicalNetworkModel.Breaker, Equipment.Breaker>()
                 .Include<PhysicalNetworkModel.GroundDisconnector, Equipment.GroundDisconnector>()
                 .Include<PhysicalNetworkModel.BusbarSection, Equipment.BusbarSection>()
+                .Include<PhysicalNetworkModel.ProtectionEquipmentExt,Equipment.ProtectionEquipmentExt > ()
                 .Include<PhysicalNetworkModel.CurrentTransformerExt, Equipment.CurrentTransformerExt>()
+                .Include<PhysicalNetworkModel.PotentialTransformer, Equipment.PotentialTransformer>()
                 .Include<PhysicalNetworkModel.FaultIndicatorExt, Equipment.FaultIndicatorExt>()
                 .Include<PhysicalNetworkModel.PowerTransformer, Equipment.PowerTransformer>()
                 .Include<PhysicalNetworkModel.PowerTransformerEndExt, Equipment.PowerTransformerEndExt>()
@@ -50,7 +52,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 .Include<PhysicalNetworkModel.ExternalNetworkInjection, Equipment.ExternalNetworkInjection>()
 
                 .Include<PhysicalNetworkModel.EnergyConsumer, Equipment.EnergyConsumer>()
-                .Include<PhysicalNetworkModel.UsagePoint, Equipment.UsagePoint>()
+                .Include<PhysicalNetworkModel.UsagePointExt, Equipment.UsagePointExt>()
 
                 .Include<PhysicalNetworkModel.ACLineSegment, Equipment.ACLineSegment>()
                 .Include<PhysicalNetworkModel.ACLineSegmentExt, Equipment.ACLineSegmentExt>();
@@ -59,11 +61,13 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 cfg.CreateMap<PhysicalNetworkModel.CoordinateSystem, Equipment.CoordinateSystem>();
 
                 // Asset
+                /*
                 cfg.CreateMap<PhysicalNetworkModel.Asset, Equipment.Asset>()
                .ForMember(x => x.OrganisationRoles, opt => opt.Ignore());
                 cfg.CreateMap<PhysicalNetworkModel.LifecycleDate, Equipment.LifecycleDate>();
                 cfg.CreateMap<PhysicalNetworkModel.StreetAddress, Equipment.StreetAddress>();
                 cfg.CreateMap<PhysicalNetworkModel.StreetDetail, Equipment.StreetDetail>();
+                */
 
                 // Location
                 cfg.CreateMap<PhysicalNetworkModel.LocationExt, Equipment.LocationExt>();
@@ -85,6 +89,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 cfg.CreateMap<PhysicalNetworkModel.VoltageLevel, Equipment.VoltageLevel>()
                 .ForMember(x => x.BaseVoltage, opt => opt.Ignore())
                 .ForMember(x => x.PSRType, opt => opt.Ignore());
+
                 cfg.CreateMap<PhysicalNetworkModel.VoltageLevelEquipmentContainer, Equipment.VoltageLevelEquipmentContainer>();
 
                 // BayExt
@@ -122,8 +127,20 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 .ForMember(x => x.BaseVoltage, opt => opt.Ignore())
                 .ForMember(x => x.PSRType, opt => opt.Ignore());
 
+                // ProtectionEquipmentExt
+                cfg.CreateMap<PhysicalNetworkModel.ProtectionEquipmentExt, Equipment.ProtectionEquipmentExt>()
+                .ForMember(x => x.PSRType, opt => opt.Ignore());
+                cfg.CreateMap<PhysicalNetworkModel.ProtectionEquipmentExtCurrentTransformers, Equipment.ProtectionEquipmentExtCurrentTransformers>();
+                cfg.CreateMap<PhysicalNetworkModel.ProtectionEquipmentExtPotentialTransformers, Equipment.ProtectionEquipmentExtPotentialTransformers>();
+                cfg.CreateMap<PhysicalNetworkModel.ProtectionEquipmentProtectedSwitches, Equipment.ProtectionEquipmentProtectedSwitches>();
+
+
                 // CurrentTransformerExt
                 cfg.CreateMap<PhysicalNetworkModel.CurrentTransformerExt, Equipment.CurrentTransformerExt>()
+                .ForMember(x => x.PSRType, opt => opt.Ignore());
+
+                // PotentialTransformer
+                cfg.CreateMap<PhysicalNetworkModel.PotentialTransformer, Equipment.PotentialTransformer>()
                 .ForMember(x => x.PSRType, opt => opt.Ignore());
 
                 // FaultIndicatorExt
@@ -173,7 +190,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                .ForMember(x => x.PSRType, opt => opt.Ignore());
 
                 // UsagePoint
-                cfg.CreateMap<PhysicalNetworkModel.UsagePoint, Equipment.UsagePoint>();
+                cfg.CreateMap<PhysicalNetworkModel.UsagePointExt, Equipment.UsagePointExt>();
                 cfg.CreateMap<PhysicalNetworkModel.UsagePointEquipments, Equipment.UsagePointEquipments>();
 
 
@@ -191,32 +208,92 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 // Various reference types
                 cfg.CreateMap<PhysicalNetworkModel.EquipmentEquipmentContainer, Equipment.EquipmentEquipmentContainer>();
                 cfg.CreateMap<PhysicalNetworkModel.PowerSystemResourceLocation, Equipment.PowerSystemResourceLocation>();
-                cfg.CreateMap<PhysicalNetworkModel.PowerSystemResourceAssets, Equipment.PowerSystemResourceAssets>();
+                //cfg.CreateMap<PhysicalNetworkModel.PowerSystemResourceAssets, Equipment.PowerSystemResourceAssets>();
                 cfg.CreateMap<PhysicalNetworkModel.AuxiliaryEquipmentTerminal, Equipment.AuxiliaryEquipmentTerminal>();
 
                 // Various property types
-                cfg.CreateMap<PhysicalNetworkModel.Voltage, Equipment.Voltage>();
-                cfg.CreateMap<PhysicalNetworkModel.ApparentPower, Equipment.ApparentPower>();
-                cfg.CreateMap<PhysicalNetworkModel.ActivePower, Equipment.ActivePower>();
-                cfg.CreateMap<PhysicalNetworkModel.KiloActivePower, Equipment.KiloActivePower>();
-                cfg.CreateMap<PhysicalNetworkModel.ActivePowerPerFrequency, Equipment.ActivePowerPerFrequency>();
-                cfg.CreateMap<PhysicalNetworkModel.Reactance, Equipment.Reactance>();
-                cfg.CreateMap<PhysicalNetworkModel.Resistance, Equipment.Resistance>();
-                cfg.CreateMap<PhysicalNetworkModel.Capacitance, Equipment.Capacitance>();
-                cfg.CreateMap<PhysicalNetworkModel.Conductance, Equipment.Conductance>();
-                cfg.CreateMap<PhysicalNetworkModel.CurrentFlow, Equipment.CurrentFlow>();
-                cfg.CreateMap<PhysicalNetworkModel.Frequency, Equipment.Frequency>();
+                cfg.CreateMap<PhysicalNetworkModel.Voltage, Equipment.Voltage>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.ApparentPower, Equipment.ApparentPower>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.ActivePower, Equipment.ActivePower>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.KiloActivePower, Equipment.KiloActivePower>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.ActivePowerPerFrequency, Equipment.ActivePowerPerFrequency>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Reactance, Equipment.Reactance>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Resistance, Equipment.Resistance>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Capacitance, Equipment.Capacitance>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Conductance, Equipment.Conductance>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.CurrentFlow, Equipment.CurrentFlow>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Frequency, Equipment.Frequency>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true));
+
                 cfg.CreateMap<PhysicalNetworkModel.GroundingImpedance, Equipment.GroundingImpedance>();
-                cfg.CreateMap<PhysicalNetworkModel.KiloActivePower, Equipment.KiloActivePower>();
-                cfg.CreateMap<PhysicalNetworkModel.Length, Equipment.Length>();
-                cfg.CreateMap<PhysicalNetworkModel.PerCent, Equipment.PerCent>();
-                cfg.CreateMap<PhysicalNetworkModel.PU, Equipment.PU>();
-                cfg.CreateMap<PhysicalNetworkModel.ReactivePower, Equipment.ReactivePower>();
-                cfg.CreateMap<PhysicalNetworkModel.RotationSpeed, Equipment.RotationSpeed>();
-                cfg.CreateMap<PhysicalNetworkModel.Seconds, Equipment.Seconds>();
+
+                cfg.CreateMap<PhysicalNetworkModel.KiloActivePower, Equipment.KiloActivePower>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Length, Equipment.Length>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.PerCent, Equipment.PerCent>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.PU, Equipment.PU>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.ReactivePower, Equipment.ReactivePower>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.RotationSpeed, Equipment.RotationSpeed>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.Seconds, Equipment.Seconds>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
                 cfg.CreateMap<PhysicalNetworkModel.Status, Equipment.Status>();
-                cfg.CreateMap<PhysicalNetworkModel.Susceptance, Equipment.Susceptance>();
-                cfg.CreateMap<PhysicalNetworkModel.VoltagePerReactivePower, Equipment.VoltagePerReactivePower>();
+
+                cfg.CreateMap<PhysicalNetworkModel.Susceptance, Equipment.Susceptance>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
+
+                cfg.CreateMap<PhysicalNetworkModel.VoltagePerReactivePower, Equipment.VoltagePerReactivePower>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true))
+                    .ForMember(dest => dest.multiplierSpecified, opt => opt.UseValue<bool>(true));
 
 
             });
@@ -230,17 +307,25 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
         /// <returns></returns>
         public Equipment.IdentifiedObject MapObject(MappingContext mapContext, PhysicalNetworkModel.IdentifiedObject pnmObj)
         {
+            HashSet<string> IgnoreList = new HashSet<string>() { "PetersenCoilInfoExt", "PotentialTransformerInfoExt", "AssetExt", "AssetInfo", "BusbarSectionInfo", "SwitchInfoExt", "CurrentTransformerInfoExt", "PowerTransformerInfoExt", "Owner", "Manufacturer", "ProductAssetModel", "CableInfoExt", "OverheadWireInfoExt" };
+
             Equipment.IdentifiedObject netSamObj = null;
 
             try
             {
-                netSamObj = Mapper.Map<Equipment.IdentifiedObject>(pnmObj);
+                if (!IgnoreList.Contains(pnmObj.GetType().Name))
+                    netSamObj = Mapper.Map<Equipment.IdentifiedObject>(pnmObj);
             }
             catch (Exception ex)
             {
-                return null;
+                System.Diagnostics.Debug.WriteLine("Error mapping " + pnmObj.GetType().Name);
                 //throw new Exception("Error mapping " + pnmObj.GetType().Name, ex);
+                //return null;
+
             }
+
+            if (netSamObj == null)
+                return null;
 
 
             // Handle PSRType
@@ -271,7 +356,9 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                     // If an orphan energy consumer, set voltage level to 400 volt
                     else if (neighboorWithVoltageLevel == null && pnmObj is PhysicalNetworkModel.EnergyConsumer)
                         ci.BaseVoltage = 400;
-                    //else throw new Exception("ConductingEquipment with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
+                    else
+                        ci.BaseVoltage = 0;
+                       //throw new Exception("ConductingEquipment with mRID=" + pnmObj.mRID + " BaseVoltage not set.");
                 }                    
 
                 if (ci.BaseVoltage > 0)
@@ -303,7 +390,6 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 ((Equipment.TransformerEnd)netSamObj).BaseVoltage = new Equipment.TransformerEndBaseVoltage() { @ref = baseVoltage.mRID };
             }
 
-
             // Handle position points
             if (pnmObj is PhysicalNetworkModel.LocationExt && ((PhysicalNetworkModel.LocationExt)pnmObj).coordinates != null)
             {
@@ -312,7 +398,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 Equipment.LocationExt xmlLoc = netSamObj as Equipment.LocationExt;
 
                 List<Equipment.PositionPoint> xmlPositionPoints = new List<Equipment.PositionPoint>();
-                
+
                 // Add position point for each coordinate
                 int seqNo = 1;
                 foreach (var coord in loc.coordinates)
@@ -328,8 +414,14 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             return netSamObj;
         }
 
+
         public PropertyModification MapProperty(MappingContext mapContext, string propertyName, object valueObject)
         {
+            if (propertyName == "coordinates")
+            {
+
+            }
+
             if (valueObject == null)
             {
                 return new PropertyModification() { Name = propertyName };
@@ -344,57 +436,59 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
 
 
             if (valueObject is PhysicalNetworkModel.Voltage)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Voltage> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Voltage>(valueObject) };
             if (valueObject is PhysicalNetworkModel.ApparentPower)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ApparentPower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.ApparentPower>(valueObject) };
             if (valueObject is PhysicalNetworkModel.ActivePower)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ActivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.ActivePower>(valueObject) };
             if (valueObject is PhysicalNetworkModel.KiloActivePower)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.KiloActivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.KiloActivePower>(valueObject) };
             if (valueObject is PhysicalNetworkModel.ActivePowerPerFrequency)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ActivePowerPerFrequency> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.ActivePowerPerFrequency>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Reactance)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Reactance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Reactance>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Resistance)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Resistance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Resistance>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Capacitance)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Capacitance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Capacitance>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Conductance)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Conductance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Conductance>(valueObject) };
             if (valueObject is PhysicalNetworkModel.CurrentFlow)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.CurrentFlow> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.CurrentFlow>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Frequency)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Frequency> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Frequency>(valueObject) };
             if (valueObject is PhysicalNetworkModel.GroundingImpedance)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.GroundingImpedance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.GroundingImpedance>(valueObject) };
             if (valueObject is PhysicalNetworkModel.KiloActivePower)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.KiloActivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.KiloActivePower>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Length)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Length> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Length>(valueObject) };
             if (valueObject is PhysicalNetworkModel.PerCent)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.PerCent> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.PerCent>(valueObject) };
             if (valueObject is PhysicalNetworkModel.PU)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.PU> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.PU>(valueObject) };
             if (valueObject is PhysicalNetworkModel.ReactivePower)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.ReactivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.ReactivePower>(valueObject) };
             if (valueObject is PhysicalNetworkModel.RotationSpeed)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.RotationSpeed> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.RotationSpeed>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Seconds)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Seconds> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Seconds>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Status)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Status> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Status>(valueObject) };
             if (valueObject is PhysicalNetworkModel.Susceptance)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.Susceptance> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.Susceptance>(valueObject) };
             if (valueObject is PhysicalNetworkModel.VoltagePerReactivePower)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.VoltagePerReactivePower> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.VoltagePerReactivePower>(valueObject) };
 
+            /*
             if (valueObject is PhysicalNetworkModel.LifecycleDate)
                 return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.LifecycleDate>(valueObject) };
+            */
             if (valueObject is PhysicalNetworkModel.StreetAddress)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.StreetAddress> (valueObject) };
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.StreetAddress>(valueObject) };
             if (valueObject is PhysicalNetworkModel.StreetDetail)
-                return new PropertyModification() { Name = propertyName, Value = Mapper.Map < Equipment.StreetDetail> (valueObject) };
-    
+                return new PropertyModification() { Name = propertyName, Value = Mapper.Map<Equipment.StreetDetail>(valueObject) };
+
 
             if (valueObject is PhysicalNetworkModel.Point2D[])
             {

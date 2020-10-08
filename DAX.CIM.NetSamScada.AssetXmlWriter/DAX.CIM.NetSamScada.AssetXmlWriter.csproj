@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C253ADB-6B01-45F0-8D6C-85DC337E42A5}</ProjectGuid>
+    <ProjectGuid>{DBCA783D-494D-4F2C-AF67-31724B80C2DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAX.CIM.NetSamScada.XMLSchemas</RootNamespace>
-    <AssemblyName>DAX.CIM.NetSamScada.XMLSchemas</AssemblyName>
+    <RootNamespace>DAX.CIM.NetSamScada.AssetXmlWriter</RootNamespace>
+    <AssemblyName>DAX.CIM.NetSamScada.AssetXmlWriter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DAX.CIM.Differ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAX.CIM.Differ.0.0.1-b04\lib\NET45\DAX.CIM.Differ.dll</HintPath>
+    </Reference>
     <Reference Include="DAX.CIM.PhysicalNetworkModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.3.5\lib\NET45\DAX.CIM.PhysicalNetworkModel.dll</HintPath>
     </Reference>
@@ -42,6 +49,15 @@
     <Reference Include="DAX.CIM.PhysicalNetworkModel.Traversal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.3.5\lib\NET45\DAX.CIM.PhysicalNetworkModel.Traversal.dll</HintPath>
     </Reference>
+    <Reference Include="DAX.Cson, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAX.Cson.1.0.0-b04\lib\NET45\DAX.Cson.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.3.0\lib\net45\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,40 +68,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NetSamAssetProfile.cs">
-      <DependentUpon>NetSamAssetProfile.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="NetSamAssetDeltaProfile.cs" />
-    <Compile Include="NetSamEquipmentDeltaProfile.cs" />
-    <Compile Include="NetSamEquipmentProfile.cs" />
-    <Compile Include="NetSamMeasurementProfile.cs" />
-    <Compile Include="NetSamMeterReadingProfile.cs" />
+    <Compile Include="Diff\AssetDeltaDiffer.cs" />
+    <Compile Include="GUIDHelper.cs" />
+    <Compile Include="Mapping\Asset2NetSamObjectMapper.cs" />
+    <Compile Include="Mapping\AssetMappingContext.cs" />
+    <Compile Include="NetSamAssetXMLConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NetSamAssetProfile.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NetSamEquipmentDeltaProfile.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NetSamEquipmentProfile.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NetSamMeasurementProfile.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NetSamMeterReadingProfile.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <ProjectReference Include="..\DAX.CIM.NetSamScada.XMLSchemas\DAX.CIM.NetSamScada.XMLSchemas.csproj">
+      <Project>{6c253adb-6b01-45f0-8d6c-85dc337e42a5}</Project>
+      <Name>DAX.CIM.NetSamScada.XMLSchemas</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

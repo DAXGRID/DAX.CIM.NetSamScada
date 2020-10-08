@@ -7,6 +7,141 @@
         <member name="T:DAX.CIM.PhysicalNetworkModel.AssetInfo">
             <remarks/>
         </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.AssetInfo.AssetModel">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.AssetInfoAssetModel.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.AssetInfoAssetModel.ref">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.BusbarSectionInfo.ratedCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.BusbarSectionInfo.ratedVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.AssetExt.lastMaintenanceDate">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.AssetExt.lastMaintenanceDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.UsagePointExt.customerCategoryCode">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.UsagePointExt.customerCategoryText">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.UsagePointExt.installationId">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.UsagePointExt.meterId">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.UsagePointExt.meteringPointId">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.UsagePointExt.yearlyUsage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfoExt.ratedBreakingCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfoExt.ratedMakingCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfoExt.ratedWithstandCurrent1sec">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfoExt.ratedWithstandCurrent3sek">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfoExt.relayFunction">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfo.breakingCapacity">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfo.ratedCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.SwitchInfo.ratedVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.actualCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.cooling">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.coolingSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.maximumCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.minimumCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.mode">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.modeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.operationLimit">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.operationLimitSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.ratedImpluseWithstandVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.ratedIsolationVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PetersenCoilInfoExt.ratedVoltage">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.CoolingKind.forcedAir">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.CoolingKind.forcedOilAndAir">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.CoolingKind.other">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.CoolingKind.selfCooling">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.CurrentTransformerInfoExt.primaryCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.CurrentTransformerInfoExt.secondaryCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PotentialTransformerInfoExt.primaryVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PotentialTransformerInfoExt.secondaryVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PowerTransformerInfoExt.lowerBound">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PowerTransformerInfoExt.thermalRatedS">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PowerTransformerInfoExt.upperBound">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PowerTransformerInfoExt.hasInternalDeltaWinding">
+            <remarks/>
+        </member>
         <member name="P:DAX.CIM.PhysicalNetworkModel.CableInfo.outerJacketKind">
             <remarks/>
         </member>
@@ -55,6 +190,15 @@
         <member name="F:DAX.CIM.PhysicalNetworkModel.CableShieldMaterialKind.steel">
             <remarks/>
         </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProductAssetModel.Manufacturer">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProductAssetModelManufacturer.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProductAssetModelManufacturer.ref">
+            <remarks/>
+        </member>
         <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfo.insulationMaterial">
             <remarks/>
         </member>
@@ -68,6 +212,12 @@
             <remarks/>
         </member>
         <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfo.ratedCurrent">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.PetersenCoilOperationalLimitKind.Item2hour">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.PetersenCoilOperationalLimitKind.continuous">
             <remarks/>
         </member>
         <member name="T:DAX.CIM.PhysicalNetworkModel.WireInsulationKind">
@@ -159,6 +309,223 @@
             Only relevant if <see cref="P:DAX.CIM.PhysicalNetworkModel.Changes.DataSetMember.Change"/> is <see cref="T:DAX.CIM.PhysicalNetworkModel.Changes.ObjectModification"/> or <see cref="T:DAX.CIM.PhysicalNetworkModel.Changes.ObjectDeletion"/>
             </summary>
         </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExt.CurrentTransformers">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExt.PotentialTransformers">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExtCurrentTransformers">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExtCurrentTransformers.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExtCurrentTransformers.ref">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExtPotentialTransformers">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExtPotentialTransformers.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentExtPotentialTransformers.ref">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.b0ch">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.bch">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.conductorCrossSectionalArea">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.conductorCrossSectionalAreaSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.g0ch">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.gch">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.r">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.r0">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.ratedVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.ratedWithstandCurrent1sec">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.x">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.WireInfoExt.x0">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.EIP">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.EIP.DistributionNodeAsset">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.EIP.IdentifiedObject">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.EIP.PowerSystemResource">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.EIP.ServiceDeliveryPoint">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.EIP.UsagePoint">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.baseVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.eipName">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.eipSubtype">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.manufacturer">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.productAssetModel">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.ratedCurrent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.ratedPower">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.ratedVoltage">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.wgs84Latitude">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.wgs84LatitudeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.wgs84Longitude">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeAsset.wgs84LongitudeSpecified">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.DistributionNodeParent">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeParent.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.DistributionNodeParent.ref">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint.eipName">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint.wgs84Latitude">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint.wgs84LatitudeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint.wgs84Longitude">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint.wgs84LongitudeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPoint.distributionNode">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPointDistributionNode">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPointDistributionNode.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ServiceDeliveryPointDistributionNode.ref">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.HVConnectivityNode">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.HVInjectionPoint">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.HVMeasurement">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.HVPowerTransformer">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.LVCabinet">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.LVCabinetFeeder">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.LVConnectivityNode">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.LVFeeder">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.LVMeasurement">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.MVConnectivityNode">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.MVFeeder">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.MVInjectionPoint">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.MVMeasurement">
+            <remarks/>
+        </member>
+        <member name="F:DAX.CIM.PhysicalNetworkModel.DistributionNodeKind.MVPowerTransformer">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.ProtectionEquipment">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipment.ProtectedSwitches">
+            <remarks/>
+        </member>
+        <member name="T:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentProtectedSwitches">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentProtectedSwitches.referenceType">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.ProtectionEquipmentProtectedSwitches.ref">
+            <remarks/>
+        </member>
         <member name="M:DAX.CIM.PhysicalNetworkModel.Traversal.BasicTraversal.DFS(System.Predicate{DAX.CIM.PhysicalNetworkModel.ConductingEquipment},System.Predicate{DAX.CIM.PhysicalNetworkModel.ConnectivityNode},System.Boolean,DAX.CIM.PhysicalNetworkModel.Traversal.CimContext)">
             <summary>
             Conducts a Depth First Search (DFS)
@@ -220,6 +587,13 @@
             Disconnect a terminal from its connectivity node
             </summary>
             <param name="terminal"></param>
+        </member>
+        <member name="M:DAX.CIM.PhysicalNetworkModel.Traversal.Internals.InMemCimContext.GetNeighborConductingEquipments(DAX.CIM.PhysicalNetworkModel.ConductingEquipment)">
+            <summary>
+            Get the neighbors of a conducting equipment.
+            </summary>
+            <param name="ci"></param>
+            <returns></returns>
         </member>
         <member name="T:DAX.CIM.PhysicalNetworkModel.ACDCTerminal">
             <summary>
@@ -345,6 +719,9 @@
             <remarks/>
         </member>
         <member name="P:DAX.CIM.PhysicalNetworkModel.Asset.AssetInfo">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.Asset.AssetModel">
             <remarks/>
         </member>
         <member name="T:DAX.CIM.PhysicalNetworkModel.AssetAssetInfo">
@@ -808,6 +1185,11 @@
         <member name="P:DAX.CIM.PhysicalNetworkModel.IdentifiedObject.Names">
             <remarks/>
         </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.IdentifiedObject.Parent">
+            <summary>
+            Returns parent equipment container. Null if the object has no parent.
+            </summary>
+        </member>
         <member name="T:DAX.CIM.PhysicalNetworkModel.IdentifiedObjectNames">
             <remarks/>
         </member>
@@ -1239,6 +1621,9 @@
             <remarks/>
         </member>
         <member name="P:DAX.CIM.PhysicalNetworkModel.PowerTransformerEndExt.uk">
+            <remarks/>
+        </member>
+        <member name="P:DAX.CIM.PhysicalNetworkModel.PowerTransformerEndExt.ratingFactor">
             <remarks/>
         </member>
         <member name="T:DAX.CIM.PhysicalNetworkModel.PowerTransformerEndPowerTransformer">

@@ -40,9 +40,9 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
                 yield return obj;
         }
 
-        public ProfileEnvelop GetXMLData(List<PhysicalNetworkModel.IdentifiedObject> cimObjects)
+        public EquipmentProfile GetXMLData(List<PhysicalNetworkModel.IdentifiedObject> cimObjects)
         {
-            ProfileEnvelop profile = new ProfileEnvelop();
+            EquipmentProfile profile = new EquipmentProfile();
 
             var afterProcessing = cimObjects;
 
@@ -54,12 +54,12 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
             foreach (var cimObj in afterProcessing)
             {
                 var netSamObj = mapper.MapObject(mapContext, cimObj);
+
                 if (netSamObj != null)
                     mappedObjects.Add(netSamObj);
             }
 
             profile.CoordinateSystem = mappedObjects.OfType<Equipment.CoordinateSystem>().ToArray();
-            profile.Asset = mappedObjects.OfType<Equipment.Asset>().ToArray();
             profile.Location = mappedObjects.OfType<Equipment.Location>().ToArray();
             profile.ConnectivityNode = mappedObjects.OfType<Equipment.ConnectivityNode>().ToArray();
             profile.Terminal = mappedObjects.OfType<Equipment.Terminal>().ToArray();
@@ -73,6 +73,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
             profile.GroundDisconnector = mappedObjects.OfType<Equipment.GroundDisconnector>().ToArray();
             profile.BusbarSection = mappedObjects.OfType<Equipment.BusbarSection>().ToArray();
             profile.CurrentTransformerExt = mappedObjects.OfType<Equipment.CurrentTransformerExt>().ToArray();
+            profile.PotentialTransformer = mappedObjects.OfType<Equipment.PotentialTransformer>().ToArray();
+            profile.ProtectionEquipmentExt = mappedObjects.OfType<Equipment.ProtectionEquipmentExt>().ToArray();
             profile.FaultIndicatorExt = mappedObjects.OfType < Equipment.FaultIndicatorExt> ().ToArray();
             profile.PowerTransformer = mappedObjects.OfType < Equipment.PowerTransformer> ().ToArray();
             profile.PowerTransformerEndExt = mappedObjects.OfType < Equipment.PowerTransformerEndExt> ().ToArray();
@@ -80,14 +82,12 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter
             profile.AsynchronousMachine = mappedObjects.OfType < Equipment.AsynchronousMachine> ().ToArray();
             profile.SynchronousMachine = mappedObjects.OfType < Equipment.SynchronousMachine> ().ToArray();
             profile.EnergyConsumer = mappedObjects.OfType < Equipment.EnergyConsumer> ().ToArray();
-            profile.UsagePoint = mappedObjects.OfType < Equipment.UsagePoint> ().ToArray();
+            profile.UsagePointExt = mappedObjects.OfType < Equipment.UsagePointExt> ().ToArray();
             profile.ACLineSegmentExt = mappedObjects.OfType<Equipment.ACLineSegmentExt>().ToArray();
 
             // From context
             profile.PSRType = mapContext.PSRTypes.ToArray();
             profile.BaseVoltage = mapContext.BaseVoltages.ToArray();
-            profile.AssetOwner = mapContext.AssetOwners.ToArray();
-            profile.Maintainer = mapContext.AssetMaintainers.ToArray();
             profile.PositionPoint = mapContext.PositionPoints.ToArray();
 
 

@@ -39,16 +39,16 @@
       <HintPath>..\packages\DAX.CIM.Differ.0.0.1-b04\lib\NET45\DAX.CIM.Differ.dll</HintPath>
     </Reference>
     <Reference Include="DAX.CIM.PhysicalNetworkModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.2.0\lib\NET45\DAX.CIM.PhysicalNetworkModel.dll</HintPath>
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.3.5\lib\NET45\DAX.CIM.PhysicalNetworkModel.dll</HintPath>
     </Reference>
     <Reference Include="DAX.CIM.PhysicalNetworkModel.FeederInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.2.0\lib\NET45\DAX.CIM.PhysicalNetworkModel.FeederInfo.dll</HintPath>
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.3.5\lib\NET45\DAX.CIM.PhysicalNetworkModel.FeederInfo.dll</HintPath>
     </Reference>
     <Reference Include="DAX.CIM.PhysicalNetworkModel.LineInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.2.0\lib\NET45\DAX.CIM.PhysicalNetworkModel.LineInfo.dll</HintPath>
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.3.5\lib\NET45\DAX.CIM.PhysicalNetworkModel.LineInfo.dll</HintPath>
     </Reference>
     <Reference Include="DAX.CIM.PhysicalNetworkModel.Traversal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.2.0\lib\NET45\DAX.CIM.PhysicalNetworkModel.Traversal.dll</HintPath>
+      <HintPath>..\packages\DAX.CIM.PhysicalNetworkModel.2.3.5\lib\NET45\DAX.CIM.PhysicalNetworkModel.Traversal.dll</HintPath>
     </Reference>
     <Reference Include="DAX.Cson, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DAX.Cson.1.0.0-b04\lib\NET45\DAX.Cson.dll</HintPath>
@@ -105,6 +105,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAX.CIM.NetSamScada.AssetXmlWriter\DAX.CIM.NetSamScada.AssetXmlWriter.csproj">
+      <Project>{dbca783d-494d-4f2c-af67-31724b80c2df}</Project>
+      <Name>DAX.CIM.NetSamScada.AssetXmlWriter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAX.CIM.NetSamScada.EquipmentXmlWriter\DAX.CIM.NetSamScada.EquipmentXmlWriter.csproj">
       <Project>{f6f51f94-81ca-4913-b4c8-cf153f59d5b7}</Project>
       <Name>DAX.CIM.NetSamScada.EquipmentXmlWriter</Name>

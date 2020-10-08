@@ -18,8 +18,8 @@ namespace DAX.CIM.NetSamScada.PreProcessors
     /// </summary>
     public class AddMissingBayProcessor : IPreProcessor
     {
-        //int _guidOffset = 1000; // Don't work of course.. will change all guids if an bay is addede DOH!
-
+        int _guidOffset = 1000;
+        
         public IEnumerable<IdentifiedObject> Transform(CimContext context, IEnumerable<IdentifiedObject> input)
         {
             foreach (var inputCimObject in input)
@@ -27,14 +27,13 @@ namespace DAX.CIM.NetSamScada.PreProcessors
                 if (inputCimObject is Switch)
                 {
                     Switch sw = inputCimObject as Switch;
-                    int guidOffset = 1000;
 
                     // Only manipulate switches that are inside substations and that has no bay
                     if (sw.IsInsideSubstation(context) && !sw.HasBay(true,context))
                     {
                         // Create fictional bay
                         var newBay = new BayExt();
-                        newBay.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(sw.mRID), guidOffset + 1, true).ToString();
+                        newBay.mRID = GUIDHelper.CreateDerivedGuid(Guid.Parse(sw.mRID), _guidOffset + 1, true).ToString();
                         newBay.name = sw.name + " bay";
                         newBay.description = "Auto generated sectionalizer bay";
 

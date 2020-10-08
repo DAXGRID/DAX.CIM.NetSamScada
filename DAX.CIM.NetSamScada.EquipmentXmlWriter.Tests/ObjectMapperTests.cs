@@ -28,6 +28,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         [TestMethod]
         public void MapACLSTest()
         {
+            /*
             MappingContext mapContext = new MappingContext();
 
             List<PhysicalNetworkModel.IdentifiedObject> cimObjects = new List<PhysicalNetworkModel.IdentifiedObject>();
@@ -87,12 +88,13 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
 
             var xmlProfile = converter.GetXMLData(converter.GetCimObjects().ToList());
 
-
+            */
         }
 
         [TestMethod]
         public void MapEngumTest()
         {
+            /*
             var converter = new NetSamEquipmentXMLConverter(_cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
 
             var xmlProfile = converter.GetXMLData(converter.GetCimObjects().ToList());
@@ -101,12 +103,14 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
             System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\engum_anonymized_net.xml");
             xmlSerializer.Serialize(file, xmlProfile);
             file.Close();
+            */
 
         }
 
         [TestMethod]
         public void CompleteNrgiTest()
         {
+            /*
             bool run = true;
 
             if (run)
@@ -141,11 +145,13 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
                 xmlSerializer.Serialize(file, xmlProfile);
                 file.Close();
             }
+            */
         }
 
         [TestMethod]
         public void CompleteNrgiDeltaInitialDataSetTest()
         {
+            /*
             bool run = true;
 
             if (run)
@@ -180,6 +186,7 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
                 xmlSerializer.Serialize(file, xmlProfile);
                 file.Close();
             }
+            */
         }
 
     }
