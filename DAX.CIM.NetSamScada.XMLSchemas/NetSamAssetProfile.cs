@@ -20,9 +20,9 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://visue.dk/asset_1_0", IsNullable=false)]
-    public partial class Assets {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://konstant.dk/asset/1_3", IsNullable=false)]
+    public partial class AssetProfile {
         
         private Asset[] assetField;
         
@@ -34,11 +34,15 @@ namespace DAX.CIM.NetSamScada.Asset {
         
         private AssetOwner[] assetOwnerField;
         
+        private BaseVoltage[] baseVoltageField;
+        
         private BusbarSectionInfo[] busbarSectionInfoField;
         
         private CableInfo[] cableInfoField;
         
         private CableInfoExt[] cableInfoExtField;
+        
+        private CurrentTransformerInfoExt[] currentTransformerInfoExtField;
         
         private IdentifiedObject[] identifiedObjectField;
         
@@ -53,6 +57,14 @@ namespace DAX.CIM.NetSamScada.Asset {
         private PetersenCoilInfoExt[] petersenCoilInfoExtField;
         
         private PetersenCoilTapChangerTablePointExt[] petersenCoilTapChangerTablePointExtField;
+        
+        private PotentialTransformerInfoExt[] potentialTransformerInfoExtField;
+        
+        private PowerSystemResource[] powerSystemResourceField;
+        
+        private PowerTransformerInfo[] powerTransformerInfoField;
+        
+        private PowerTransformerInfoExt[] powerTransformerInfoExtField;
         
         private ProductAssetModel[] productAssetModelField;
         
@@ -122,6 +134,17 @@ namespace DAX.CIM.NetSamScada.Asset {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("BaseVoltage")]
+        public BaseVoltage[] BaseVoltage {
+            get {
+                return this.baseVoltageField;
+            }
+            set {
+                this.baseVoltageField = value;
+            }
+        }
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("BusbarSectionInfo")]
         public BusbarSectionInfo[] BusbarSectionInfo {
             get {
@@ -151,6 +174,17 @@ namespace DAX.CIM.NetSamScada.Asset {
             }
             set {
                 this.cableInfoExtField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CurrentTransformerInfoExt")]
+        public CurrentTransformerInfoExt[] CurrentTransformerInfoExt {
+            get {
+                return this.currentTransformerInfoExtField;
+            }
+            set {
+                this.currentTransformerInfoExtField = value;
             }
         }
         
@@ -232,6 +266,50 @@ namespace DAX.CIM.NetSamScada.Asset {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PotentialTransformerInfoExt")]
+        public PotentialTransformerInfoExt[] PotentialTransformerInfoExt {
+            get {
+                return this.potentialTransformerInfoExtField;
+            }
+            set {
+                this.potentialTransformerInfoExtField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PowerSystemResource")]
+        public PowerSystemResource[] PowerSystemResource {
+            get {
+                return this.powerSystemResourceField;
+            }
+            set {
+                this.powerSystemResourceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PowerTransformerInfo")]
+        public PowerTransformerInfo[] PowerTransformerInfo {
+            get {
+                return this.powerTransformerInfoField;
+            }
+            set {
+                this.powerTransformerInfoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PowerTransformerInfoExt")]
+        public PowerTransformerInfoExt[] PowerTransformerInfoExt {
+            get {
+                return this.powerTransformerInfoExtField;
+            }
+            set {
+                this.powerTransformerInfoExtField = value;
+            }
+        }
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ProductAssetModel")]
         public ProductAssetModel[] ProductAssetModel {
             get {
@@ -304,7 +382,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Asset : IdentifiedObject {
         
         private string lotNumberField;
@@ -312,6 +390,14 @@ namespace DAX.CIM.NetSamScada.Asset {
         private string serialNumberField;
         
         private string typeField;
+        
+        private AssetAssetInfo assetInfoField;
+        
+        private LifecycleDate lifecycleField;
+        
+        private AssetOrganisationRoles[] organisationRolesField;
+        
+        private AssetPowerSystemResources[] powerSystemResourcesField;
         
         /// <remarks/>
         public string lotNumber {
@@ -342,69 +428,46 @@ namespace DAX.CIM.NetSamScada.Asset {
                 this.typeField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OrganisationRole))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Manufacturer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOrganisationRole))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Maintainer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOwner))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetModel))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProductAssetModel))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetInfo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WireInfo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WireInfoExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OverheadWireInfoExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CableInfo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CableInfoExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SwitchInfo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SwitchInfoExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ShuntCompensatorInfo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PetersenCoilInfoExt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusbarSectionInfo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Asset))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetExt))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
-    public partial class IdentifiedObject {
-        
-        private string mRIDField;
-        
-        private string descriptionField;
-        
-        private string nameField;
         
         /// <remarks/>
-        public string mRID {
+        public AssetAssetInfo AssetInfo {
             get {
-                return this.mRIDField;
+                return this.assetInfoField;
             }
             set {
-                this.mRIDField = value;
+                this.assetInfoField = value;
             }
         }
         
         /// <remarks/>
-        public string description {
+        public LifecycleDate lifecycle {
             get {
-                return this.descriptionField;
+                return this.lifecycleField;
             }
             set {
-                this.descriptionField = value;
+                this.lifecycleField = value;
             }
         }
         
         /// <remarks/>
-        public string name {
+        [System.Xml.Serialization.XmlElementAttribute("OrganisationRoles")]
+        public AssetOrganisationRoles[] OrganisationRoles {
             get {
-                return this.nameField;
+                return this.organisationRolesField;
             }
             set {
-                this.nameField = value;
+                this.organisationRolesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PowerSystemResources")]
+        public AssetPowerSystemResources[] PowerSystemResources {
+            get {
+                return this.powerSystemResourcesField;
+            }
+            set {
+                this.powerSystemResourcesField = value;
             }
         }
     }
@@ -414,7 +477,42 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://konstant.dk/asset/1_3")]
+    public partial class AssetAssetInfo {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class PetersenCoilTapChangerTablePointExt {
         
         private CurrentFlow currentField;
@@ -460,7 +558,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class CurrentFlow {
         
         private UnitMultiplier multiplierField;
@@ -536,7 +634,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum UnitMultiplier {
         
         /// <remarks/>
@@ -576,7 +674,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum UnitSymbol {
         
         /// <remarks/>
@@ -666,7 +764,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Voltage {
         
         private UnitMultiplier multiplierField;
@@ -744,7 +842,28 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class BaseVoltage {
+        
+        private Voltage nominalVoltageField;
+        
+        /// <remarks/>
+        public Voltage nominalVoltage {
+            get {
+                return this.nominalVoltageField;
+            }
+            set {
+                this.nominalVoltageField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Reactance {
         
         private UnitMultiplier multiplierField;
@@ -822,7 +941,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Resistance {
         
         private UnitMultiplier multiplierField;
@@ -900,7 +1019,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Conductance {
         
         private UnitMultiplier multiplierField;
@@ -978,7 +1097,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Susceptance {
         
         private UnitMultiplier multiplierField;
@@ -1056,7 +1175,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class ApparentPower {
         
         private UnitMultiplier multiplierField;
@@ -1130,6 +1249,329 @@ namespace DAX.CIM.NetSamScada.Asset {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class PU {
+        
+        private UnitMultiplier multiplierField;
+        
+        private bool multiplierFieldSpecified;
+        
+        private UnitSymbol unitField;
+        
+        private bool unitFieldSpecified;
+        
+        private string valueField;
+        
+        public PU() {
+            this.multiplierField = UnitMultiplier.none;
+            this.unitField = UnitSymbol.none;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitMultiplier multiplier {
+            get {
+                return this.multiplierField;
+            }
+            set {
+                this.multiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool multiplierSpecified {
+            get {
+                return this.multiplierFieldSpecified;
+            }
+            set {
+                this.multiplierFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UnitSymbol unit {
+            get {
+                return this.unitField;
+            }
+            set {
+                this.unitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool unitSpecified {
+            get {
+                return this.unitFieldSpecified;
+            }
+            set {
+                this.unitFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class LifecycleDate {
+        
+        private System.DateTime manufacturedDateField;
+        
+        private bool manufacturedDateFieldSpecified;
+        
+        private System.DateTime purchaseDateField;
+        
+        private bool purchaseDateFieldSpecified;
+        
+        private System.DateTime receivedDateField;
+        
+        private bool receivedDateFieldSpecified;
+        
+        private System.DateTime installationDateField;
+        
+        private bool installationDateFieldSpecified;
+        
+        private System.DateTime removalDateField;
+        
+        private bool removalDateFieldSpecified;
+        
+        private System.DateTime retiredDateField;
+        
+        private bool retiredDateFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime manufacturedDate {
+            get {
+                return this.manufacturedDateField;
+            }
+            set {
+                this.manufacturedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool manufacturedDateSpecified {
+            get {
+                return this.manufacturedDateFieldSpecified;
+            }
+            set {
+                this.manufacturedDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime purchaseDate {
+            get {
+                return this.purchaseDateField;
+            }
+            set {
+                this.purchaseDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool purchaseDateSpecified {
+            get {
+                return this.purchaseDateFieldSpecified;
+            }
+            set {
+                this.purchaseDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime receivedDate {
+            get {
+                return this.receivedDateField;
+            }
+            set {
+                this.receivedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool receivedDateSpecified {
+            get {
+                return this.receivedDateFieldSpecified;
+            }
+            set {
+                this.receivedDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime installationDate {
+            get {
+                return this.installationDateField;
+            }
+            set {
+                this.installationDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool installationDateSpecified {
+            get {
+                return this.installationDateFieldSpecified;
+            }
+            set {
+                this.installationDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime removalDate {
+            get {
+                return this.removalDateField;
+            }
+            set {
+                this.removalDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool removalDateSpecified {
+            get {
+                return this.removalDateFieldSpecified;
+            }
+            set {
+                this.removalDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime retiredDate {
+            get {
+                return this.retiredDateField;
+            }
+            set {
+                this.retiredDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool retiredDateSpecified {
+            get {
+                return this.retiredDateFieldSpecified;
+            }
+            set {
+                this.retiredDateFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerSystemResource))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OrganisationRole))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Manufacturer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOrganisationRole))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Maintainer))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOwner))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetModel))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProductAssetModel))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WireInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WireInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OverheadWireInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CableInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CableInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SwitchInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SwitchInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ShuntCompensatorInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PotentialTransformerInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PetersenCoilInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrentTransformerInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusbarSectionInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Asset))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetExt))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class IdentifiedObject {
+        
+        private string mRIDField;
+        
+        private string descriptionField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string mRID {
+            get {
+                return this.mRIDField;
+            }
+            set {
+                this.mRIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class PowerSystemResource : IdentifiedObject {
+    }
+    
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Manufacturer))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssetOrganisationRole))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Maintainer))]
@@ -1138,7 +1580,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class OrganisationRole : IdentifiedObject {
     }
     
@@ -1147,7 +1589,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Manufacturer : OrganisationRole {
     }
     
@@ -1158,7 +1600,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public abstract partial class AssetOrganisationRole : OrganisationRole {
     }
     
@@ -1167,7 +1609,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class Maintainer : AssetOrganisationRole {
     }
     
@@ -1176,7 +1618,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class AssetOwner : AssetOrganisationRole {
     }
     
@@ -1186,7 +1628,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class AssetModel : IdentifiedObject {
     }
     
@@ -1195,7 +1637,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class ProductAssetModel : AssetModel {
         
         private ProductAssetModelManufacturer manufacturerField;
@@ -1216,7 +1658,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://konstant.dk/asset/1_3")]
     public partial class ProductAssetModelManufacturer {
         
         private string referenceTypeField;
@@ -1255,13 +1697,17 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SwitchInfo))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SwitchInfoExt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ShuntCompensatorInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerInfo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PotentialTransformerInfoExt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PetersenCoilInfoExt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrentTransformerInfoExt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusbarSectionInfo))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class AssetInfo : IdentifiedObject {
         
         private AssetInfoAssetModel assetModelField;
@@ -1282,7 +1728,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://konstant.dk/asset/1_3")]
     public partial class AssetInfoAssetModel {
         
         private string referenceTypeField;
@@ -1321,7 +1767,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class WireInfo : AssetInfo {
         
         private WireInsulationKind insulationMaterialField;
@@ -1390,7 +1836,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum WireInsulationKind {
         
         /// <remarks/>
@@ -1451,7 +1897,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum WireMaterialKind {
         
         /// <remarks/>
@@ -1490,7 +1936,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class WireInfoExt : WireInfo {
         
         private Susceptance b0chField;
@@ -1644,7 +2090,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class OverheadWireInfoExt : WireInfoExt {
     }
     
@@ -1654,7 +2100,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class CableInfo : WireInfoExt {
         
         private CableOuterJacketKind outerJacketKindField;
@@ -1736,7 +2182,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum CableOuterJacketKind {
         
         /// <remarks/>
@@ -1764,7 +2210,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum CableShieldMaterialKind {
         
         /// <remarks/>
@@ -1788,7 +2234,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class CableInfoExt : CableInfo {
         
         private string conductorCountField;
@@ -1884,7 +2330,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class SwitchInfo : AssetInfo {
         
         private CurrentFlow breakingCapacityField;
@@ -1929,7 +2375,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class SwitchInfoExt : SwitchInfo {
         
         private CurrentFlow ratedBreakingCurrentField;
@@ -1998,7 +2444,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class ShuntCompensatorInfo : AssetInfo {
         
         private ApparentPower maxPowerLossField;
@@ -2039,12 +2485,102 @@ namespace DAX.CIM.NetSamScada.Asset {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PowerTransformerInfoExt))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class PowerTransformerInfo : AssetInfo {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class PowerTransformerInfoExt : PowerTransformerInfo {
+        
+        private PU lowerBoundField;
+        
+        private ApparentPower thermalRatedSField;
+        
+        private PU upperBoundField;
+        
+        /// <remarks/>
+        public PU lowerBound {
+            get {
+                return this.lowerBoundField;
+            }
+            set {
+                this.lowerBoundField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public ApparentPower thermalRatedS {
+            get {
+                return this.thermalRatedSField;
+            }
+            set {
+                this.thermalRatedSField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PU upperBound {
+            get {
+                return this.upperBoundField;
+            }
+            set {
+                this.upperBoundField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class PotentialTransformerInfoExt : AssetInfo {
+        
+        private Voltage primaryVoltageField;
+        
+        private Voltage secondaryVoltageField;
+        
+        /// <remarks/>
+        public Voltage primaryVoltage {
+            get {
+                return this.primaryVoltageField;
+            }
+            set {
+                this.primaryVoltageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Voltage secondaryVoltage {
+            get {
+                return this.secondaryVoltageField;
+            }
+            set {
+                this.secondaryVoltageField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class PetersenCoilInfoExt : AssetInfo {
+        
+        private CurrentFlow actualCurrentField;
         
         private CoolingKind coolingField;
         
@@ -2067,6 +2603,16 @@ namespace DAX.CIM.NetSamScada.Asset {
         private Voltage ratedIsolationVoltageField;
         
         private Voltage ratedVoltageField;
+        
+        /// <remarks/>
+        public CurrentFlow actualCurrent {
+            get {
+                return this.actualCurrentField;
+            }
+            set {
+                this.actualCurrentField = value;
+            }
+        }
         
         /// <remarks/>
         public CoolingKind cooling {
@@ -2185,7 +2731,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum CoolingKind {
         
         /// <remarks/>
@@ -2204,7 +2750,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum PetersenCoilModeKind {
         
         /// <remarks/>
@@ -2220,7 +2766,7 @@ namespace DAX.CIM.NetSamScada.Asset {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public enum PetersenCoilOperationalLimitKind {
         
         /// <remarks/>
@@ -2236,7 +2782,40 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
+    public partial class CurrentTransformerInfoExt : AssetInfo {
+        
+        private CurrentFlow primaryCurrentField;
+        
+        private CurrentFlow secondaryCurrentField;
+        
+        /// <remarks/>
+        public CurrentFlow primaryCurrent {
+            get {
+                return this.primaryCurrentField;
+            }
+            set {
+                this.primaryCurrentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public CurrentFlow secondaryCurrent {
+            get {
+                return this.secondaryCurrentField;
+            }
+            set {
+                this.secondaryCurrentField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class BusbarSectionInfo : AssetInfo {
         
         private CurrentFlow ratedCurrentField;
@@ -2269,7 +2848,77 @@ namespace DAX.CIM.NetSamScada.Asset {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://visue.dk/asset_1_0")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://konstant.dk/asset/1_3")]
+    public partial class AssetOrganisationRoles {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://konstant.dk/asset/1_3")]
+    public partial class AssetPowerSystemResources {
+        
+        private string referenceTypeField;
+        
+        private string refField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string referenceType {
+            get {
+                return this.referenceTypeField;
+            }
+            set {
+                this.referenceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @ref {
+            get {
+                return this.refField;
+            }
+            set {
+                this.refField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://konstant.dk/asset/1_3")]
     public partial class AssetExt : Asset {
         
         private System.DateTime lastMaintenanceDateField;

@@ -207,7 +207,9 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
                 cfg.CreateMap<PhysicalNetworkModel.Frequency, Equipment.Frequency>();
                 cfg.CreateMap<PhysicalNetworkModel.GroundingImpedance, Equipment.GroundingImpedance>();
                 cfg.CreateMap<PhysicalNetworkModel.KiloActivePower, Equipment.KiloActivePower>();
-                cfg.CreateMap<PhysicalNetworkModel.Length, Equipment.Length>();
+                cfg.CreateMap<PhysicalNetworkModel.Length, Equipment.Length>()
+                    .ForMember(dest => dest.unitSpecified, opt => opt.UseValue<bool>(true));
+
                 cfg.CreateMap<PhysicalNetworkModel.PerCent, Equipment.PerCent>();
                 cfg.CreateMap<PhysicalNetworkModel.PU, Equipment.PU>();
                 cfg.CreateMap<PhysicalNetworkModel.ReactivePower, Equipment.ReactivePower>();
@@ -237,7 +239,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             }
             catch (Exception ex)
             {
-                throw new Exception("Error mapping " + pnmObj.GetType().Name, ex);
+                //throw new Exception("Error mapping " + pnmObj.GetType().Name, ex);
+                return null;
             }
 
 
@@ -245,7 +248,10 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             if (pnmObj is PhysicalNetworkModel.PowerSystemResource && ((PhysicalNetworkModel.PowerSystemResource)pnmObj).PSRType != null)
             {
                 var psr = pnmObj as PhysicalNetworkModel.PowerSystemResource;
-                var psrType = mapContext.GetOrCreatePSRTypeByName(psr.PSRType);
+
+
+
+                var psrType = mapContext.GetOrCreatePSRTypeByName(MapPSRType(psr.PSRType));
                 ((Equipment.PowerSystemResource)netSamObj).PSRType = new Equipment.PowerSystemResourcePSRType() { @ref = psrType.mRID };
             }
 
@@ -322,6 +328,18 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             return netSamObj;
         }
 
-      
+        private string MapPSRType(string pSRType)
+        {
+            if (pSRType.ToLower() == "customercable")
+            {
+                return "Cable";
+            }
+            else if (pSRType.ToLower() == "customeroverheadline")
+            {
+                return "OverheadLine";
+            }
+            else
+                return pSRType;
+        }
     }
 }

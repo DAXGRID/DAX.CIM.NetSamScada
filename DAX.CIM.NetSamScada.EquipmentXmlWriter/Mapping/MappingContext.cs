@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,7 +36,9 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             {
                 var newBaseVoltage = new Equipment.BaseVoltage();
                 newBaseVoltage.nominalVoltage = new Equipment.Voltage() { multiplier = Equipment.UnitMultiplier.none, unit = Equipment.UnitSymbol.V, unitSpecified = true, Value = Convert.ToSingle(voltageLevel) };
-                newBaseVoltage.mRID = GUIDHelper.CreateDerivedGuid(_baseVoltageGuidBase, _baseVoltages.Count + 1).ToString();
+                //newBaseVoltage.mRID = GUIDHelper.CreateDerivedGuid(_baseVoltageGuidBase, _baseVoltages.Count + 1).ToString();
+                newBaseVoltage.mRID = StringToGUID("base voltage " + voltageLevel).ToString();
+
                 _baseVoltages.Add(voltageLevel, newBaseVoltage);
 
                 return newBaseVoltage;
@@ -50,7 +53,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             {
                 var newPsrType = new Equipment.PSRType();
                 newPsrType.name = name;
-                newPsrType.mRID = GUIDHelper.CreateDerivedGuid(_psrTypeGuidBase, _psrTypes.Count + 1).ToString();
+                //newPsrType.mRID = GUIDHelper.CreateDerivedGuid(_psrTypeGuidBase, _psrTypes.Count + 1).ToString();
+                newPsrType.mRID = StringToGUID("psrtype " + name).ToString();
                 _psrTypes.Add(name, newPsrType);
 
                 return newPsrType;
@@ -65,7 +69,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             {
                 var assetOwner = new Equipment.AssetOwner();
                 assetOwner.name = name;
-                assetOwner.mRID = GUIDHelper.CreateDerivedGuid(_ownerGuidBase, _owners.Count + 1).ToString();
+                //assetOwner.mRID = GUIDHelper.CreateDerivedGuid(_ownerGuidBase, _owners.Count + 1).ToString();
+                assetOwner.mRID = StringToGUID("asset owner: " + name).ToString();
                 _owners.Add(name, assetOwner);
 
                 return assetOwner;
@@ -80,7 +85,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             {
                 var maintainer = new Equipment.Maintainer();
                 maintainer.name = name;
-                maintainer.mRID = GUIDHelper.CreateDerivedGuid(_maintainerGuidBase, _maintainers.Count + 1).ToString();
+                //maintainer.mRID = GUIDHelper.CreateDerivedGuid(_maintainerGuidBase, _maintainers.Count + 1).ToString();
+                maintainer.mRID = StringToGUID("asset maintainer: " + name).ToString();
                 _maintainers.Add(name, maintainer);
 
                 return maintainer;
@@ -98,6 +104,15 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Mapping
             pp.yPosition = Convert.ToString(y, System.Globalization.CultureInfo.InvariantCulture);
             _positionPoints.Add(pp);
             return pp;
+        }
+
+        private Guid StringToGUID(string value)
+        {
+            // Create a new instance of the MD5CryptoServiceProvider object.
+            MD5 md5Hasher = MD5.Create();
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(value));
+            return new Guid(data);
         }
     }
 }

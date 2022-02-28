@@ -19,7 +19,8 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
 
         protected override void SetUp()
         {
-            var reader = new CimJsonFileReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Data\engum_anonymized.jsonl"));
+            //var reader = new CimJsonFileReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Data\engum.jsonl"));
+            var reader = new CimJsonFileReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"c:\temp\cim\engum.jsonl"));
             _cimObjects = reader.Read().ToList();
             _context = CimContext.Create(_cimObjects);
             Using(_context);
@@ -95,10 +96,16 @@ namespace DAX.CIM.NetSamScada.EquipmentXmlWriter.Tests
         {
             var converter = new NetSamEquipmentXMLConverter(_cimObjects, new List<IPreProcessor> { new AddMissingBayProcessor(), new DisconnectedLinkProcessor(), new EnsureACLSUniqueNames() });
 
-            var xmlProfile = converter.GetXMLData(converter.GetCimObjects().ToList());
+            var test = _cimObjects.Find(c => c is ACLineSegmentExt && ((ACLineSegmentExt)c).x != null);
+
+            var convertedObjects = converter.GetCimObjects().ToList();
+
+            var test2 = convertedObjects.Find(c => c is ACLineSegmentExt && ((ACLineSegmentExt)c).x != null);
+
+            var xmlProfile = converter.GetXMLData(convertedObjects);
 
             XmlSerializer xmlSerializer = new XmlSerializer(xmlProfile.GetType());
-            System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\engum_anonymized_net.xml");
+            System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\temp\cim\engum_old_psi.xml");
             xmlSerializer.Serialize(file, xmlProfile);
             file.Close();
 

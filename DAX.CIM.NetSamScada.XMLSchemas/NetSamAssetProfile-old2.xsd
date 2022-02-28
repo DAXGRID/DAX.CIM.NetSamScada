@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:cim="http://konstant.dk/asset/1_3" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:cimp="http://www.iec.ch/cimprofile" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://konstant.dk/asset/1_3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="AssetProfile" type="cim:AssetProfile" />
-  <xs:complexType name="AssetProfile">
+<xs:schema xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:cim="http://visue.dk/asset_1_0" xmlns:cimp="http://www.iec.ch/cimprofile" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://visue.dk/asset_1_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Assets" type="cim:Assets" />
+  <xs:complexType name="Assets">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Asset" type="cim:Asset" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetExt" type="cim:AssetExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetInfo" type="cim:AssetInfo" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetModel" type="cim:AssetModel" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetOwner" type="cim:AssetOwner" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BaseVoltage" type="cim:BaseVoltage" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BusbarSectionInfo" type="cim:BusbarSectionInfo" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CableInfo" type="cim:CableInfo" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CableInfoExt" type="cim:CableInfoExt" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurrentTransformerInfoExt" type="cim:CurrentTransformerInfoExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="IdentifiedObject" type="cim:IdentifiedObject" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Maintainer" type="cim:Maintainer" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Manufacturer" type="cim:Manufacturer" />
@@ -20,10 +18,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OverheadWireInfoExt" type="cim:OverheadWireInfoExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PetersenCoilInfoExt" type="cim:PetersenCoilInfoExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PetersenCoilTapChangerTablePointExt" type="cim:PetersenCoilTapChangerTablePointExt" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PotentialTransformerInfoExt" type="cim:PotentialTransformerInfoExt" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PowerSystemResource" type="cim:PowerSystemResource" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PowerTransformerInfo" type="cim:PowerTransformerInfo" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PowerTransformerInfoExt" type="cim:PowerTransformerInfoExt" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductAssetModel" type="cim:ProductAssetModel" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ShuntCompensatorInfo" type="cim:ShuntCompensatorInfo" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SwitchInfo" type="cim:SwitchInfo" />
@@ -32,120 +26,7 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="WireInfoExt" type="cim:WireInfoExt" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="Version" abstract="true" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version">
-    <xs:annotation>
-      <xs:documentation>Version details.</xs:documentation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="iec61970cim16v22b_iec61968cim12v07_iec62325cim03v01" name="baseUML" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.baseUML">
-        <xs:annotation>
-          <xs:documentation>Base UML provided by CIM model manager.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://iec.ch/TC57/2013/61970-452/EquipmentCore/4" name="baseURIcore" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.baseURIcore">
-        <xs:annotation>
-          <xs:documentation>Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://iec.ch/TC57/2013/61970-452/EquipmentOperation/4" name="baseURIoperation" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.baseURIoperation">
-        <xs:annotation>
-          <xs:documentation>Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://iec.ch/TC57/2013/61970-452/EquipmentShortCircuit/4" name="baseURIshortCircuit" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.baseURIshortCircuit">
-        <xs:annotation>
-          <xs:documentation>Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="2018-02-01" name="date" type="xs:date">
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://iec.ch/TC57/61970-552/DifferenceModel/1#" name="differenceModelURI" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.differenceModelURI">
-        <xs:annotation>
-          <xs:documentation>Difference model URI defined by IEC 61970-552. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://iec.ch/TC57/61970-552/ModelDescription/1#" name="modelDescriptionURI" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.modelDescriptionURI">
-        <xs:annotation>
-          <xs:documentation>Model Description URI defined by IEC 61970-552. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="namespaceRDF" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.namespaceRDF">
-        <xs:annotation>
-          <xs:documentation>RDF namespace. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://iec.ch/TC57/2013/CIM-schema-cim16#" name="namespaceUML" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.namespaceUML">
-        <xs:annotation>
-          <xs:documentation>CIM UML namespace. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="0.1" name="version" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.version">
-        <xs:annotation>
-          <xs:documentation>Profile version.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="visue07_iec61970cim16v22b_iec61968cim12v07_iec62325cim03v01" name="visueUML" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.visueUML">
-        <xs:annotation>
-          <xs:documentation>UML provided by Visue</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://visue.dk/CIM/Asset/1" name="visueURIcore" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.visueURIcore">
-        <xs:annotation>
-          <xs:documentation>Profile URI defined by Visue and used in the Model Exchange header. It uniquely identifies the Profile and its version. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://visue.dk/CIM/EquipmentOperation/1" name="visueURIoperation" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.visueURIoperation">
-        <xs:annotation>
-          <xs:documentation>Profile URI defined by SAM-NET and used in the Model Exchange header. It uniquely identifies the Profile and its version. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" fixed="http://visue.dk/CIM/EquipmentShortCircuit/1" name="visueURIshortCircuit" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Version.visueURIshortCircuit">
-        <xs:annotation>
-          <xs:documentation>Profile URI defined by Visue and used in the Model Exchange header. It uniquely identifies the Profile and its version. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="LifecycleDate" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate">
-    <xs:annotation>
-      <xs:documentation>Dates for lifecycle events of an asset.</xs:documentation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="Compound">Compound</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="manufacturedDate" type="xs:date" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate.manufacturedDate">
-        <xs:annotation>
-          <xs:documentation>Date the asset was manufactured.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="purchaseDate" type="xs:date" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate.purchaseDate">
-        <xs:annotation>
-          <xs:documentation>Date the asset was purchased. Note that even though an asset may have been purchased, it may not have been received into inventory at the time of purchase.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="receivedDate" type="xs:date" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate.receivedDate">
-        <xs:annotation>
-          <xs:documentation>Date the asset was received and first placed into inventory.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="installationDate" type="xs:date" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate.installationDate">
-        <xs:annotation>
-          <xs:documentation>(if applicable) Date current installation was completed, which may not be the same as the in-service date. Asset may have been installed at other locations previously. Ignored if asset is (1) not currently installed (e.g., stored in a depot) or (2) not intended to be installed (e.g., vehicle, tool).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="removalDate" type="xs:date" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate.removalDate">
-        <xs:annotation>
-          <xs:documentation>(if applicable) Date when the asset was last removed from service. Ignored if (1) not intended to be in service, or (2) currently in service.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="retiredDate" type="xs:date" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#LifecycleDate.retiredDate">
-        <xs:annotation>
-          <xs:documentation>(if applicable) Date the asset is permanently retired from service and may be scheduled for disposal. Ignored if asset is (1) currently in service, or (2) permanently removed from service.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Asset" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset">
+  <xs:complexType name="Asset" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Asset">
     <xs:annotation>
       <xs:documentation>Benyttes til at berige PowerSystemResource med asset information.
 
@@ -154,74 +35,39 @@ Tangible resource of the utility, including power system equipment, various end 
     <xs:complexContent mixed="false">
       <xs:extension base="cim:IdentifiedObject">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="lotNumber" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.lotNumber">
+          <xs:element minOccurs="0" maxOccurs="1" name="lotNumber" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Asset.lotNumber">
             <xs:annotation>
               <xs:documentation>Lot number for this asset. Even for the same model and version number, many assets are manufactured in lots.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="serialNumber" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.serialNumber">
+          <xs:element minOccurs="0" maxOccurs="1" name="serialNumber" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Asset.serialNumber">
             <xs:annotation>
               <xs:documentation>Serial number of this asset.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="type" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.type">
+          <xs:element minOccurs="0" maxOccurs="1" name="type" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Asset.type">
             <xs:annotation>
               <xs:documentation>Utility-specific classification of Asset and its subtypes, according to their corporate standards, practices, and existing IT systems (e.g., for management of assets, maintenance, work, outage, customers, etc.).</xs:documentation>
             </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="AssetInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.AssetInfo">
-            <xs:annotation>
-              <xs:documentation>Data applicable to this asset.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-              <xs:attribute name="referenceType" type="xs:string" use="optional" />
-              <xs:attribute name="ref" type="xs:string">
-              </xs:attribute>
-            </xs:complexType>
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="lifecycle" type="cim:LifecycleDate" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.lifecycle">
-            <xs:annotation>
-              <xs:documentation>Lifecycle dates for this asset.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrganisationRoles" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.OrganisationRoles">
-            <xs:annotation>
-              <xs:documentation>All roles an organisation plays for this asset.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-              <xs:attribute name="referenceType" type="xs:string" use="optional" />
-              <xs:attribute name="ref" type="xs:string">
-              </xs:attribute>
-            </xs:complexType>
-          </xs:element>
-          <xs:element minOccurs="1" maxOccurs="unbounded" name="PowerSystemResources" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Asset.PowerSystemResources">
-            <xs:annotation>
-              <xs:documentation>All power system resources used to electrically model this asset. For example, transformer asset is electrically modelled with a transformer and its windings and tap changer.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-              <xs:attribute name="referenceType" type="xs:string" use="optional" />
-              <xs:attribute name="ref" type="xs:string">
-              </xs:attribute>
-            </xs:complexType>
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="AssetExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetExt">
+  <xs:complexType name="AssetExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetExt">
     <xs:annotation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:Asset">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="lastMaintenanceDate" type="xs:dateTime" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetExt.lastMaintenanceDate">
+          <xs:element minOccurs="0" maxOccurs="1" name="lastMaintenanceDate" type="xs:dateTime" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetExt.lastMaintenanceDate">
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="AssetInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetInfo">
+  <xs:complexType name="AssetInfo" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetInfo">
     <xs:annotation>
       <xs:documentation>Set of attributes of an asset, representing typical datasheet information of a physical device that can be instantiated and shared in different data exchange contexts:
 - as attributes of an asset instance (installed or in stock)
@@ -231,7 +77,7 @@ Tangible resource of the utility, including power system equipment, various end 
     <xs:complexContent mixed="false">
       <xs:extension base="cim:IdentifiedObject">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="AssetModel" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetInfo.AssetModel">
+          <xs:element minOccurs="0" maxOccurs="1" name="AssetModel" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetInfo.AssetModel">
             <xs:annotation>
               <xs:documentation>Asset model described by this data.</xs:documentation>
             </xs:annotation>
@@ -245,17 +91,18 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="AssetModel" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetModel">
+  <xs:complexType name="AssetModel" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetModel">
     <xs:annotation>
       <xs:documentation>Model of an asset, either a product of a specific manufacturer or a generic asset model or material item. Datasheet characteristics are available through the associated AssetInfo subclass and can be shared with asset or power system resource instances.</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:IdentifiedObject">
-        <xs:sequence />
+        <xs:sequence>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="AssetOrganisationRole" abstract="true" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetOrganisationRole">
+  <xs:complexType name="AssetOrganisationRole" abstract="true" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetOrganisationRole">
     <xs:annotation>
       <xs:documentation>Role an organisation plays with respect to asset.</xs:documentation>
     </xs:annotation>
@@ -265,7 +112,7 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="AssetOwner" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#AssetOwner">
+  <xs:complexType name="AssetOwner" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#AssetOwner">
     <xs:annotation>
       <xs:documentation>Owner of the asset.</xs:documentation>
     </xs:annotation>
@@ -275,13 +122,13 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="Float" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Float">
+  <xs:simpleType name="Float" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Float">
     <xs:annotation>
       <xs:documentation>A floating point number. The range is unspecified and not limited.</xs:documentation>
     </xs:annotation>
     <xs:union memberTypes="xs:float xs:double" />
   </xs:simpleType>
-  <xs:simpleType name="UnitMultiplier" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#UnitMultiplier">
+  <xs:simpleType name="UnitMultiplier" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier">
     <xs:annotation>
       <xs:documentation>The unit multipliers defined for the CIM.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -344,7 +191,7 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="UnitSymbol" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#UnitSymbol">
+  <xs:simpleType name="UnitSymbol" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol">
     <xs:annotation>
       <xs:documentation>The units defined for usage in the CIM.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -487,7 +334,7 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CurrentFlow">
+  <xs:complexType name="CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CurrentFlow">
     <xs:annotation>
       <xs:documentation>Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
@@ -499,7 +346,7 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Voltage">
+  <xs:complexType name="Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Voltage">
     <xs:annotation>
       <xs:documentation>Electrical voltage, can be both AC and DC.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
@@ -511,19 +358,19 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="BusbarSectionInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#BusbarSectionInfo">
+  <xs:complexType name="BusbarSectionInfo" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#BusbarSectionInfo">
     <xs:annotation>
       <xs:documentation>Busbar section data.</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:AssetInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#BusbarSectionInfo.ratedCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#BusbarSectionInfo.ratedCurrent">
             <xs:annotation>
               <xs:documentation>Rated current.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#BusbarSectionInfo.ratedVoltage">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#BusbarSectionInfo.ratedVoltage">
             <xs:annotation>
               <xs:documentation>Rated voltage.</xs:documentation>
             </xs:annotation>
@@ -532,7 +379,7 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="CableOuterJacketKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableOuterJacketKind">
+  <xs:simpleType name="CableOuterJacketKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableOuterJacketKind">
     <xs:annotation>
       <xs:documentation>Kind of cable outer jacket.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -575,7 +422,7 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="CableShieldMaterialKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableShieldMaterialKind">
+  <xs:simpleType name="CableShieldMaterialKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableShieldMaterialKind">
     <xs:annotation>
       <xs:documentation>Kind of cable shield material.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -608,25 +455,25 @@ Tangible resource of the utility, including power system equipment, various end 
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="CableInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfo">
+  <xs:complexType name="CableInfo" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfo">
     <xs:annotation>
       <xs:documentation>Cable data.</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:WireInfoExt">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="outerJacketKind" type="cim:CableOuterJacketKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfo.outerJacketKind">
+          <xs:element minOccurs="0" maxOccurs="1" name="outerJacketKind" type="cim:CableOuterJacketKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfo.outerJacketKind">
             <xs:annotation>
               <xs:documentation>Kind of outer jacket of the cable.
 CIM Adapter: cim.cableinfo.outerjacket.kind</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="sheathAsNeutral" type="xs:boolean" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfo.sheathAsNeutral">
+          <xs:element minOccurs="0" maxOccurs="1" name="sheathAsNeutral" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfo.sheathAsNeutral">
             <xs:annotation>
               <xs:documentation>True if sheath / shield is used as a neutral (i.e., bonded).</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="shieldMaterial" type="cim:CableShieldMaterialKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfo.shieldMaterial">
+          <xs:element minOccurs="0" maxOccurs="1" name="shieldMaterial" type="cim:CableShieldMaterialKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfo.shieldMaterial">
             <xs:annotation>
               <xs:documentation>Material of the shield.</xs:documentation>
             </xs:annotation>
@@ -635,7 +482,7 @@ CIM Adapter: cim.cableinfo.outerjacket.kind</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Resistance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Resistance">
+  <xs:complexType name="Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Resistance">
     <xs:annotation>
       <xs:documentation>Resistance (real part of impedance).</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
@@ -647,7 +494,7 @@ CIM Adapter: cim.cableinfo.outerjacket.kind</xs:documentation>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="Reactance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Reactance">
+  <xs:complexType name="Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Reactance">
     <xs:annotation>
       <xs:documentation>Reactance (imaginary part of impedance), at rated frequency.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
@@ -659,68 +506,53 @@ CIM Adapter: cim.cableinfo.outerjacket.kind</xs:documentation>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="CableInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt">
+  <xs:complexType name="CableInfoExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt">
     <xs:annotation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:CableInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="conductorCount" type="xs:integer" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt.conductorCount">
+          <xs:element minOccurs="0" maxOccurs="1" name="conductorCount" type="xs:integer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt.conductorCount">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="r0Neutral" type="cim:Resistance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt.r0Neutral">
+          <xs:element minOccurs="0" maxOccurs="1" name="r0Neutral" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt.r0Neutral">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="rNeutral" type="cim:Resistance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt.rNeutral">
+          <xs:element minOccurs="0" maxOccurs="1" name="rNeutral" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt.rNeutral">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="shieldCrossSectionalArea" type="xs:decimal" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt.shieldCrossSectionalArea">
+          <xs:element minOccurs="0" maxOccurs="1" name="shieldCrossSectionalArea" type="xs:decimal" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt.shieldCrossSectionalArea">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="x0Neutral" type="cim:Reactance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt.x0Neutral">
+          <xs:element minOccurs="0" maxOccurs="1" name="x0Neutral" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt.x0Neutral">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="xNeutral" type="cim:Reactance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CableInfoExt.xNeutral">
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="CurrentTransformerInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CurrentTransformerInfoExt">
-    <xs:annotation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="cim:AssetInfo">
-        <xs:sequence>
-          <xs:element minOccurs="1" maxOccurs="1" name="primaryCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CurrentTransformerInfoExt.primaryCurrent">
-          </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="secondaryCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CurrentTransformerInfoExt.secondaryCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="xNeutral" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CableInfoExt.xNeutral">
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="IdentifiedObject" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#IdentifiedObject">
+  <xs:complexType name="IdentifiedObject" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject">
     <xs:annotation>
       <xs:documentation>This is a root class to provide common identification for all classes needing identification and naming attributes.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="mRID" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#IdentifiedObject.mRID">
+      <xs:element minOccurs="0" maxOccurs="1" name="mRID" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
         <xs:annotation>
           <xs:documentation>Master resource identifier issued by a model authority. The mRID must semantically be a UUID as specified in RFC 4122. The mRID is globally unique.
 For CIMXML data files in RDF syntax, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#IdentifiedObject.description">
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.description">
         <xs:annotation>
           <xs:documentation>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#IdentifiedObject.name">
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.name">
         <xs:annotation>
           <xs:documentation>The name is any free human readable and possibly non unique text naming the object.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="Maintainer" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Maintainer">
+  <xs:complexType name="Maintainer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Maintainer">
     <xs:annotation>
       <xs:documentation>Organisation that maintains assets.</xs:documentation>
     </xs:annotation>
@@ -730,7 +562,7 @@ For CIMXML data files in RDF syntax, the mRID is mapped to rdf:ID or rdf:about a
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Manufacturer" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Manufacturer">
+  <xs:complexType name="Manufacturer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Manufacturer">
     <xs:annotation>
       <xs:documentation>Organisation that manufactures asset products.
 Fx ABB, Siemens etc.</xs:documentation>
@@ -741,17 +573,18 @@ Fx ABB, Siemens etc.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="OrganisationRole" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#OrganisationRole">
+  <xs:complexType name="OrganisationRole" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#OrganisationRole">
     <xs:annotation>
       <xs:documentation>Identifies a way in which an organisation may participate in the utility enterprise (e.g., customer, manufacturer, etc).</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:IdentifiedObject">
-        <xs:sequence />
+        <xs:sequence>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="OverheadWireInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#OverheadWireInfoExt">
+  <xs:complexType name="OverheadWireInfoExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#OverheadWireInfoExt">
     <xs:annotation>
       <xs:documentation>Conductor cross section size mm2.
 Danish: Faseleder kvadrat.
@@ -764,7 +597,7 @@ CIM Adapter: cim.overheadwire.conductor.size</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="CoolingKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#CoolingKind">
+  <xs:simpleType name="CoolingKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#CoolingKind">
     <xs:annotation>
       <xs:documentation>Kind of cooling.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -780,7 +613,7 @@ CIM Adapter: cim.overheadwire.conductor.size</xs:documentation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="PetersenCoilModeKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilModeKind">
+  <xs:simpleType name="PetersenCoilModeKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilModeKind">
     <xs:annotation>
       <xs:documentation>The mode of operation for a Petersen coil.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -803,7 +636,7 @@ CIM Adapter: cim.overheadwire.conductor.size</xs:documentation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="PetersenCoilOperationalLimitKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilOperationalLimitKind">
+  <xs:simpleType name="PetersenCoilOperationalLimitKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilOperationalLimitKind">
     <xs:restriction base="xs:string">
       <xs:enumeration value="2 hour">
       </xs:enumeration>
@@ -811,125 +644,47 @@ CIM Adapter: cim.overheadwire.conductor.size</xs:documentation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="PetersenCoilInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt">
+  <xs:complexType name="PetersenCoilInfoExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt">
     <xs:annotation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:AssetInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="actualCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.actualCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="cooling" type="cim:CoolingKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.cooling">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="cooling" type="cim:CoolingKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.cooling">
+          <xs:element minOccurs="0" maxOccurs="1" name="maximumCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.maximumCurrent">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="maximumCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.maximumCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="minimumCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.minimumCurrent">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="minimumCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.minimumCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="mode" type="cim:PetersenCoilModeKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.mode">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="mode" type="cim:PetersenCoilModeKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.mode">
+          <xs:element minOccurs="0" maxOccurs="1" name="operationLimit" type="cim:PetersenCoilOperationalLimitKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.operationLimit">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="operationLimit" type="cim:PetersenCoilOperationalLimitKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.operationLimit">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedImpluseWithstandVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.ratedImpluseWithstandVoltage">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedImpluseWithstandVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.ratedImpluseWithstandVoltage">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedIsolationVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.ratedIsolationVoltage">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedIsolationVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.ratedIsolationVoltage">
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilInfoExt.ratedVoltage">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilInfoExt.ratedVoltage">
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="PetersenCoilTapChangerTablePointExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilTapChangerTablePointExt">
+  <xs:complexType name="PetersenCoilTapChangerTablePointExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilTapChangerTablePointExt">
     <xs:annotation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="current" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilTapChangerTablePointExt.current">
+      <xs:element minOccurs="1" maxOccurs="1" name="current" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilTapChangerTablePointExt.current">
       </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" name="step" type="xs:integer" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilTapChangerTablePointExt.step">
+      <xs:element minOccurs="1" maxOccurs="1" name="step" type="xs:integer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilTapChangerTablePointExt.step">
       </xs:element>
-      <xs:element minOccurs="1" maxOccurs="1" name="voltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PetersenCoilTapChangerTablePointExt.voltage">
+      <xs:element minOccurs="1" maxOccurs="1" name="voltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#PetersenCoilTapChangerTablePointExt.voltage">
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="PotentialTransformerInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PotentialTransformerInfoExt">
-    <xs:annotation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="cim:AssetInfo">
-        <xs:sequence>
-          <xs:element minOccurs="1" maxOccurs="1" name="primaryVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PotentialTransformerInfoExt.primaryVoltage">
-          </xs:element>
-          <xs:element minOccurs="1" maxOccurs="1" name="secondaryVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PotentialTransformerInfoExt.secondaryVoltage">
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="PowerSystemResource" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PowerSystemResource">
-    <xs:annotation>
-      <xs:documentation>A power system resource can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="cim:IdentifiedObject">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="PowerTransformerInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PowerTransformerInfo">
-    <xs:annotation>
-      <xs:documentation>Set of power transformer data, from an equipment library.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="cim:AssetInfo">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="PU" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PU">
-    <xs:annotation>
-      <xs:documentation>Per Unit - a positive or negative value referred to a defined base. Values typically range from -10 to +10.</xs:documentation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
-    </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="cim:Float">
-        <xs:attribute fixed="none" name="multiplier" type="cim:UnitMultiplier" />
-        <xs:attribute fixed="none" name="unit" type="cim:UnitSymbol" />
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="ApparentPower" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ApparentPower">
-    <xs:annotation>
-      <xs:documentation>Product of the RMS value of the voltage and the RMS value of the current.</xs:documentation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
-    </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="cim:Float">
-        <xs:attribute name="multiplier" type="cim:UnitMultiplier" />
-        <xs:attribute fixed="VA" name="unit" type="cim:UnitSymbol" />
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="PowerTransformerInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PowerTransformerInfoExt">
-    <xs:annotation>
-      <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="cim:PowerTransformerInfo">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="lowerBound" type="cim:PU" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PowerTransformerInfoExt.lowerBound">
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="thermalRatedS" type="cim:ApparentPower" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PowerTransformerInfoExt.thermalRatedS">
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="upperBound" type="cim:PU" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#PowerTransformerInfoExt.upperBound">
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ProductAssetModel" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ProductAssetModel">
+  <xs:complexType name="ProductAssetModel" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ProductAssetModel">
     <xs:annotation>
       <xs:documentation>Asset model by a specific manufacturer.
 Fx ABB Safe Ring blah blah.</xs:documentation>
@@ -937,7 +692,7 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:AssetModel">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Manufacturer" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ProductAssetModel.Manufacturer">
+          <xs:element minOccurs="0" maxOccurs="1" name="Manufacturer" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ProductAssetModel.Manufacturer">
             <xs:annotation>
               <xs:documentation>Manufacturer of this asset model.</xs:documentation>
             </xs:annotation>
@@ -951,24 +706,36 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ShuntCompensatorInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ShuntCompensatorInfo">
+  <xs:complexType name="ApparentPower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ApparentPower">
+    <xs:annotation>
+      <xs:documentation>Product of the RMS value of the voltage and the RMS value of the current.</xs:documentation>
+      <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="cim:Float">
+        <xs:attribute name="multiplier" type="cim:UnitMultiplier" />
+        <xs:attribute fixed="VA" name="unit" type="cim:UnitSymbol" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ShuntCompensatorInfo" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ShuntCompensatorInfo">
     <xs:annotation>
       <xs:documentation>Properties of shunt capacitor, shunt reactor or switchable bank of shunt capacitor or reactor assets.</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:AssetInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="maxPowerLoss" type="cim:ApparentPower" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ShuntCompensatorInfo.maxPowerLoss">
+          <xs:element minOccurs="0" maxOccurs="1" name="maxPowerLoss" type="cim:ApparentPower" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ShuntCompensatorInfo.maxPowerLoss">
             <xs:annotation>
               <xs:documentation>Maximum allowed Apparent Power loss.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ShuntCompensatorInfo.ratedCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ShuntCompensatorInfo.ratedCurrent">
             <xs:annotation>
               <xs:documentation>Rated current.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#ShuntCompensatorInfo.ratedVoltage">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#ShuntCompensatorInfo.ratedVoltage">
             <xs:annotation>
               <xs:documentation>Rated voltage.</xs:documentation>
             </xs:annotation>
@@ -977,24 +744,24 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="SwitchInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfo">
+  <xs:complexType name="SwitchInfo" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfo">
     <xs:annotation>
       <xs:documentation>Switch data.</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:AssetInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="breakingCapacity" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfo.breakingCapacity">
+          <xs:element minOccurs="0" maxOccurs="1" name="breakingCapacity" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfo.breakingCapacity">
             <xs:annotation>
               <xs:documentation>The maximum fault current a breaking device can break safely under prescribed conditions of use.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfo.ratedCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfo.ratedCurrent">
             <xs:annotation>
               <xs:documentation>Rated current.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfo.ratedVoltage">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfo.ratedVoltage">
             <xs:annotation>
               <xs:documentation>Rated voltage.</xs:documentation>
             </xs:annotation>
@@ -1003,28 +770,28 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="SwitchInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfoExt">
+  <xs:complexType name="SwitchInfoExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfoExt">
     <xs:annotation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:SwitchInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedBreakingCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfoExt.ratedBreakingCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedBreakingCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfoExt.ratedBreakingCurrent">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedMakingCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfoExt.ratedMakingCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedMakingCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfoExt.ratedMakingCurrent">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedWithstandCurrent1sec" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfoExt.ratedWithstandCurrent1sec">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedWithstandCurrent1sec" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfoExt.ratedWithstandCurrent1sec">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedWithstandCurrent3sek" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfoExt.ratedWithstandCurrent3sek">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedWithstandCurrent3sek" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfoExt.ratedWithstandCurrent3sek">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="relayFunction" type="xs:string" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#SwitchInfoExt.relayFunction">
+          <xs:element minOccurs="0" maxOccurs="1" name="relayFunction" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#SwitchInfoExt.relayFunction">
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="WireInsulationKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInsulationKind">
+  <xs:simpleType name="WireInsulationKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInsulationKind">
     <xs:annotation>
       <xs:documentation>Kind of wire insulation.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -1122,7 +889,7 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="WireMaterialKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireMaterialKind">
+  <xs:simpleType name="WireMaterialKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireMaterialKind">
     <xs:annotation>
       <xs:documentation>Kind of wire material.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
@@ -1175,24 +942,24 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="WireInfo" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfo">
+  <xs:complexType name="WireInfo" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfo">
     <xs:annotation>
       <xs:documentation>Wire data that can be specified per line segment phase, or for the line segment as a whole in case its phases all have the same wire characteristics.</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:AssetInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="insulationMaterial" type="cim:WireInsulationKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfo.insulationMaterial">
+          <xs:element minOccurs="0" maxOccurs="1" name="insulationMaterial" type="cim:WireInsulationKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfo.insulationMaterial">
             <xs:annotation>
               <xs:documentation>(if insulated conductor) Material used for insulation.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="material" type="cim:WireMaterialKind" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfo.material">
+          <xs:element minOccurs="0" maxOccurs="1" name="material" type="cim:WireMaterialKind" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfo.material">
             <xs:annotation>
               <xs:documentation>Conductor material.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfo.ratedCurrent">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedCurrent" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfo.ratedCurrent">
             <xs:annotation>
               <xs:documentation>Current carrying capacity of the wire under stated thermal conditions.</xs:documentation>
             </xs:annotation>
@@ -1201,7 +968,7 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Susceptance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Susceptance">
+  <xs:complexType name="Susceptance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Susceptance">
     <xs:annotation>
       <xs:documentation>Imaginary part of admittance.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
@@ -1213,7 +980,7 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="Conductance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#Conductance">
+  <xs:complexType name="Conductance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#Conductance">
     <xs:annotation>
       <xs:documentation>Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance.</xs:documentation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="CIMDatatype">CIMDatatype</xs:documentation>
@@ -1225,50 +992,37 @@ Fx ABB Safe Ring blah blah.</xs:documentation>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="WireInfoExt" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt">
+  <xs:complexType name="WireInfoExt" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt">
     <xs:annotation>
       <xs:documentation cimp:category="Stereotype" cimp:notes="NetSam">NetSam</xs:documentation>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="cim:WireInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="b0ch" type="cim:Susceptance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.b0ch">
+          <xs:element minOccurs="0" maxOccurs="1" name="b0ch" type="cim:Susceptance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.b0ch">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="bch" type="cim:Susceptance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.bch">
+          <xs:element minOccurs="0" maxOccurs="1" name="bch" type="cim:Susceptance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.bch">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="conductorCrossSectionalArea" type="xs:decimal" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.conductorCrossSectionalArea">
+          <xs:element minOccurs="0" maxOccurs="1" name="conductorCrossSectionalArea" type="xs:decimal" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.conductorCrossSectionalArea">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="g0ch" type="cim:Conductance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.g0ch">
+          <xs:element minOccurs="0" maxOccurs="1" name="g0ch" type="cim:Conductance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.g0ch">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="gch" type="cim:Conductance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.gch">
+          <xs:element minOccurs="0" maxOccurs="1" name="gch" type="cim:Conductance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.gch">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="r" type="cim:Resistance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.r">
+          <xs:element minOccurs="0" maxOccurs="1" name="r" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.r">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="r0" type="cim:Resistance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.r0">
+          <xs:element minOccurs="0" maxOccurs="1" name="r0" type="cim:Resistance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.r0">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.ratedVoltage">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedVoltage" type="cim:Voltage" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.ratedVoltage">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="ratedWithstandCurrent1sec" type="cim:CurrentFlow" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.ratedWithstandCurrent1sec">
+          <xs:element minOccurs="0" maxOccurs="1" name="ratedWithstandCurrent1sec" type="cim:CurrentFlow" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.ratedWithstandCurrent1sec">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="x" type="cim:Reactance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.x">
+          <xs:element minOccurs="0" maxOccurs="1" name="x" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.x">
           </xs:element>
-          <xs:element minOccurs="0" maxOccurs="1" name="x0" type="cim:Reactance" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#WireInfoExt.x0">
+          <xs:element minOccurs="0" maxOccurs="1" name="x0" type="cim:Reactance" sawsdl:modelReference="http://iec.ch/TC57/2013/CIM-schema-cim16#WireInfoExt.x0">
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="BaseVoltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#BaseVoltage">
-    <xs:annotation>
-      <xs:documentation>Defines a system base voltage which is referenced. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="nominalVoltage" type="cim:Voltage" sawsdl:modelReference="http://konstant.dk/CIM/AssetExtension/1/3#BaseVoltage.nominalVoltage">
-        <xs:annotation>
-          <xs:documentation>The power system resource's base voltage.</xs:documentation>
-          <xs:documentation cimp:category="Constrtraint" cimp:subcategory="Entsoe" cimp:notes="Should be a positive value - not zero">Invariant</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
   </xs:complexType>
 </xs:schema>
